@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://pn3vm7rhopj3"]
+
+[ext_resource type="Script" uid="uid://tp6tygrfxwmm" path="res://beat_label.gd" id="1_o52wo"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_7pqif"]
+line_spacing = 1.0
+
+[node name="BeatLabel" type="CanvasLayer"]
+script = ExtResource("1_o52wo")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="CenterContainer"]
+layout_mode = 2
+text = "Press ui_accept within 150ms of the beat
+(try ui_cancel too)"
+label_settings = SubResource("LabelSettings_7pqif")
+horizontal_alignment = 1
