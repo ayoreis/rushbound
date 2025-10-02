@@ -7,7 +7,7 @@ var playback_position := 0.0
 
 
 func _process(_delta: float) -> void:
-	if Input.is_action_just_pressed("ui_cancel") and not animation_player.is_playing():
+	if Input.is_action_just_pressed("toggle_menu") and not animation_player.is_playing():
 		if animation_player.current_animation_position == 0:
 			playback_position = audio_stream_player.get_playback_position()
 			audio_stream_player.stop()

@@ -12,5 +12,5 @@ func _process(_delta: float) -> void:
 	var beat_duration := 60 / stream.bpm
 	var closest_beat := floorf(time / beat_duration) * beat_duration
 
-	if Input.is_action_just_pressed("ui_accept"):
+	if Input.is_action_just_pressed("beat"):
 		label.text = "%s beat" % ("On" if abs(time - closest_beat) < TIMING_WINDOW else "Off")
