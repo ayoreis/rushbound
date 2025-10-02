@@ -1,0 +1,34 @@
+[gd_scene load_steps=3 format=3 uid="uid://3yrtm6d30kfi"]
+
+[ext_resource type="Texture2D" uid="uid://3s6jj287qeg5" path="res://ipod.png" id="1_1gxcf"]
+[ext_resource type="PackedScene" uid="uid://bhhou8m5c0gi6" path="res://main_menu.tscn" id="2_3jtb3"]
+
+[node name="iPod" type="CanvasLayer"]
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="CenterContainer"]
+layout_mode = 2
+texture = ExtResource("1_1gxcf")
+
+[node name="Control" type="Control" parent="CenterContainer/TextureRect"]
+anchors_preset = 0
+offset_left = 13.0
+offset_top = 7.0
+offset_right = 77.0
+offset_bottom = 59.0
+
+[node name="MainMenu" parent="CenterContainer/TextureRect/Control" instance=ExtResource("2_3jtb3")]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 2
+grow_vertical = 2
