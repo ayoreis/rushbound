@@ -1,6 +1,6 @@
 [gd_resource type="Theme" load_steps=5 format=3 uid="uid://cr5eb43c1rn0t"]
 
-[ext_resource type="FontFile" uid="uid://cvh0krg1x26b5" path="res://chicago.png" id="1_e1x85"]
+[ext_resource type="FontFile" uid="uid://cvh0krg1x26b5" path="res://resources/chicago.png" id="1_e1x85"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e1x85"]
 content_margin_left = 3.0

@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://pn3vm7rhopj3"]
 
-[ext_resource type="Script" uid="uid://tp6tygrfxwmm" path="res://beat_label.gd" id="1_o52wo"]
+[ext_resource type="Script" uid="uid://tp6tygrfxwmm" path="res://scripts/beat_label.gd" id="1_o52wo"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_7pqif"]
 line_spacing = 1.0

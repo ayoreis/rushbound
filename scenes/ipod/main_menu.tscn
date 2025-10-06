@@ -1,9 +1,9 @@
 [gd_scene load_steps=5 format=3 uid="uid://bhhou8m5c0gi6"]
 
-[ext_resource type="Script" uid="uid://q7a1vm2cu0ve" path="res://main_menu.gd" id="1_06t4h"]
-[ext_resource type="Texture2D" uid="uid://feujlb2utl1b" path="res://battery.png" id="1_7vrkn"]
-[ext_resource type="Texture2D" uid="uid://csyn2hn6l0w6q" path="res://play.png" id="1_fu7sn"]
-[ext_resource type="Texture2D" uid="uid://gs5qpm1amge3" path="res://arrow-right.png" id="4_jix8l"]
+[ext_resource type="Script" uid="uid://q7a1vm2cu0ve" path="res://scripts/main_menu.gd" id="1_06t4h"]
+[ext_resource type="Texture2D" uid="uid://feujlb2utl1b" path="res://resources/battery.png" id="1_7vrkn"]
+[ext_resource type="Texture2D" uid="uid://csyn2hn6l0w6q" path="res://resources/play.png" id="1_fu7sn"]
+[ext_resource type="Texture2D" uid="uid://gs5qpm1amge3" path="res://resources/arrow-right.png" id="4_jix8l"]
 
 [node name="MainMenu" type="VBoxContainer"]
 offset_right = 320.0

@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://3yrtm6d30kfi"]
 
-[ext_resource type="Texture2D" uid="uid://3s6jj287qeg5" path="res://ipod.png" id="1_1gxcf"]
-[ext_resource type="PackedScene" uid="uid://bhhou8m5c0gi6" path="res://main_menu.tscn" id="2_3jtb3"]
+[ext_resource type="Texture2D" uid="uid://3s6jj287qeg5" path="res://resources/ipod.png" id="1_1gxcf"]
+[ext_resource type="PackedScene" uid="uid://bhhou8m5c0gi6" path="res://scenes/ipod/main_menu.tscn" id="2_3jtb3"]
 
 [node name="iPod" type="CanvasLayer"]
 

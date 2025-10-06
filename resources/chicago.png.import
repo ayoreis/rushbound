@@ -3,12 +3,12 @@
 importer="font_data_image"
 type="FontFile"
 uid="uid://cvh0krg1x26b5"
-path="res://.godot/imported/chicago.png-8b9e6d032cd2266d8ef074d037b4ee36.fontdata"
+path="res://.godot/imported/chicago.png-e40bc17be5efd4031806e70d0db4e99d.fontdata"
 
 [deps]
 
-source_file="res://chicago.png"
-dest_files=["res://.godot/imported/chicago.png-8b9e6d032cd2266d8ef074d037b4ee36.fontdata"]
+source_file="res://resources/chicago.png"
+dest_files=["res://.godot/imported/chicago.png-e40bc17be5efd4031806e70d0db4e99d.fontdata"]
 
 [params]
 

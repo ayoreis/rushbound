@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://d3jilq7li5isn"
+path="res://.godot/imported/Michael Jackson - Billie Jean.mp3-c2b8fd8b6562e71388fe42b5fc1aa5f1.mp3str"
+
+[deps]
+
+source_file="res://resources/Michael Jackson - Billie Jean.mp3"
+dest_files=["res://.godot/imported/Michael Jackson - Billie Jean.mp3-c2b8fd8b6562e71388fe42b5fc1aa5f1.mp3str"]
+
+[params]
+
+loop=true
+loop_offset=0.0
+bpm=117.0
+beat_count=0
+bar_beats=4

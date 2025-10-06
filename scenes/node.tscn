@@ -1,9 +1,9 @@
 [gd_scene load_steps=8 format=3 uid="uid://bwktrilhxr5u0"]
 
-[ext_resource type="Script" uid="uid://b8ntqux71lguk" path="res://node.gd" id="1_j2q8x"]
-[ext_resource type="PackedScene" uid="uid://3yrtm6d30kfi" path="res://ipod.tscn" id="2_112p8"]
-[ext_resource type="AudioStream" uid="uid://d3jilq7li5isn" path="res://Michael Jackson - Billie Jean.mp3" id="2_e2u21"]
-[ext_resource type="PackedScene" uid="uid://pn3vm7rhopj3" path="res://beat_label.tscn" id="3_112p8"]
+[ext_resource type="Script" uid="uid://b8ntqux71lguk" path="res://scripts/node.gd" id="1_j2q8x"]
+[ext_resource type="PackedScene" uid="uid://3yrtm6d30kfi" path="res://scenes/ipod/ipod.tscn" id="2_112p8"]
+[ext_resource type="AudioStream" uid="uid://d3jilq7li5isn" path="res://resources/Michael Jackson - Billie Jean.mp3" id="2_e2u21"]
+[ext_resource type="PackedScene" uid="uid://pn3vm7rhopj3" path="res://scenes/beat_label.tscn" id="3_112p8"]
 
 [sub_resource type="Animation" id="Animation_0e48y"]
 length = 0.001

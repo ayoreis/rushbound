@@ -1,6 +1,6 @@
 extends Control
 
-const playlists := preload("res://playlists.tscn")
+const playlists := preload("res://scenes/ipod/playlists.tscn")
 
 @onready var first_button := $ScrollContainer/MarginContainer/VBoxContainer.get_child(0) as Button
 
