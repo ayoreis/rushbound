@@ -40,12 +40,11 @@ metadata/_edit_lock_ = true
 shape = SubResource("RectangleShape2D_wtcfe")
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
-position = Vector2(157, 103)
+position = Vector2(160, 116)
 script = ExtResource("1_wtcfe")
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
-position = Vector2(3, 12)
 shape = SubResource("RectangleShape2D_epypp")
 
 [node name="Camera2D" type="Camera2D" parent="."]
