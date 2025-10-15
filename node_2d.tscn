@@ -40,6 +40,7 @@ shape = SubResource("RectangleShape2D_epypp")
 
 [node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("current_room")]
 position = Vector2(160, 90)
+position_smoothing_enabled = true
 script = ExtResource("1_0e48y")
 current_room = NodePath("../Room")
 
