@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://cj6uux2vqvqca"]
 
-[ext_resource type="Script" uid="uid://cbt732lxi80eg" path="res://camera_2d.gd" id="1_0e48y"]
-[ext_resource type="Script" uid="uid://rbaeh24hrgo4" path="res://character_body_2d.gd" id="1_wtcfe"]
+[ext_resource type="Script" uid="uid://cbt732lxi80eg" path="res://camera.gd" id="1_0e48y"]
+[ext_resource type="Script" uid="uid://rbaeh24hrgo4" path="res://player.gd" id="1_wtcfe"]
 [ext_resource type="PackedScene" uid="uid://bd1ecadynnx8p" path="res://room.tscn" id="3_epypp"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_0e48y"]
