@@ -4,28 +4,21 @@ extends Area2D
 
 var width: int = ProjectSettings.get_setting("display/window/size/viewport_width")
 var height: int = ProjectSettings.get_setting("display/window/size/viewport_height")
+var viewport_size := Vector2i(width, height)
 
-@export var room_size := Vector2i(width, height):
-	set(size):
+@export var size := viewport_size:
+	set(new_size):
 		if !is_node_ready():
 			await ready
 
-		room_size = size
-		rectangle_shape.size = room_size
+		size = new_size
+		_rectangle_shape.size = size
 
-@onready var collision_shape: CollisionShape2D = $CollisionShape2D
-@onready var rectangle_shape: RectangleShape2D = collision_shape.shape
+@onready var _collision_shape: CollisionShape2D = $CollisionShape2D
+@onready var _rectangle_shape: RectangleShape2D = _collision_shape.shape
+@onready var _path: Path2D = $Path2D
+@onready var _curve := _path.curve
 
 
 func get_closest_point(to_point: Vector2) -> Vector2:
-	var closest_point := func (path: Path2D) -> Vector2:
-		return path.to_global(path.curve.get_closest_point(path.to_local(to_point)))
-
-	var closer_point := func (a: Vector2, b: Vector2) -> Vector2:
-		return a if a.distance_to(to_point) < b.distance_to(to_point) else b
-
-	var paths := find_children("*", "Path2D")
-
-	return (paths
-			.map(closest_point)
-			.reduce(closer_point))
+	return _path.to_global(_curve.get_closest_point(_path.to_local(to_point)))

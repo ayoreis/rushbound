@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://bd1ecadynnx8p"]
+[gd_scene load_steps=4 format=3 uid="uid://bd1ecadynnx8p"]
 
 [ext_resource type="Script" uid="uid://cd3cnq3dqmo27" path="res://room.gd" id="1_88gup"]
 
@@ -6,9 +6,19 @@
 resource_local_to_scene = true
 size = Vector2(320, 180)
 
+[sub_resource type="Curve2D" id="Curve2D_88gup"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0)
+}
+point_count = 1
+
 [node name="Room" type="Area2D"]
 script = ExtResource("1_88gup")
-room_size = Vector2i(320, 180)
+size = Vector2i(320, 180)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_88gup")
+
+[node name="Path2D" type="Path2D" parent="."]
+curve = SubResource("Curve2D_88gup")

@@ -1,26 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://cj6uux2vqvqca"]
+[gd_scene load_steps=6 format=3 uid="uid://cj6uux2vqvqca"]
 
 [ext_resource type="Script" uid="uid://cbt732lxi80eg" path="res://camera_2d.gd" id="1_0e48y"]
 [ext_resource type="Script" uid="uid://rbaeh24hrgo4" path="res://character_body_2d.gd" id="1_wtcfe"]
 [ext_resource type="PackedScene" uid="uid://bd1ecadynnx8p" path="res://room.tscn" id="3_epypp"]
-
-[sub_resource type="Curve2D" id="Curve2D_epypp"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, 0, 0)
-}
-point_count = 1
-
-[sub_resource type="Curve2D" id="Curve2D_kdubu"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -90)
-}
-point_count = 2
-
-[sub_resource type="Curve2D" id="Curve2D_q6r6c"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 320, 0)
-}
-point_count = 2
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_0e48y"]
 
@@ -31,26 +13,15 @@ size = Vector2(8, 8)
 
 [node name="Room" parent="." instance=ExtResource("3_epypp")]
 position = Vector2(160, 90)
-metadata/_edit_lock_ = true
-
-[node name="Path2D" type="Path2D" parent="Room"]
-curve = SubResource("Curve2D_epypp")
 
 [node name="Room2" parent="." instance=ExtResource("3_epypp")]
 position = Vector2(480, 90)
 metadata/_edit_lock_ = true
 
-[node name="Path2D" type="Path2D" parent="Room2"]
-curve = SubResource("Curve2D_kdubu")
-
 [node name="Room3" parent="." instance=ExtResource("3_epypp")]
 position = Vector2(960, 90)
-room_size = Vector2i(640, 180)
+size = Vector2i(640, 180)
 metadata/_edit_lock_ = true
-
-[node name="Path2D" type="Path2D" parent="Room3"]
-position = Vector2(-160, 0)
-curve = SubResource("Curve2D_q6r6c")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 metadata/_edit_group_ = true
