@@ -13,7 +13,7 @@ var viewport_size := Vector2i(width, height)
 
 @export var size := viewport_size:
 	set(new_size):
-		if !is_node_ready():
+		if not is_node_ready():
 			await ready
 
 		size = new_size.max(viewport_size)
@@ -22,7 +22,7 @@ var viewport_size := Vector2i(width, height)
 
 @export var diagonal: Diagonal:
 	set(new_diagonal):
-		if !is_node_ready():
+		if not is_node_ready():
 			await ready
 
 		diagonal = new_diagonal
