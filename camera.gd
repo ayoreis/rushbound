@@ -4,7 +4,7 @@ const SPEED = 500
 
 @export var current_room: Room
 
-@onready var player: CharacterBody2D = $"../CharacterBody2D"
+@onready var player: CharacterBody2D = %Player
 
 
 func _process(_delta: float) -> void:
