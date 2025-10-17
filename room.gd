@@ -35,7 +35,26 @@ var viewport_size := Vector2i(width, height)
 
 
 func get_closest_point(to_point: Vector2) -> Vector2:
-	return _path.to_global(_curve.get_closest_point(_path.to_local(to_point)))
+	var a := to_global(_curve.get_point_position(0))
+	var b := to_global(_curve.get_point_position(1))
+
+	var clamped_x := clampf(to_point.x, minf(a.x, b.x), maxf(a.x, b.x))
+	var clamped_y := clampf(to_point.y, minf(a.y, b.y), maxf(a.y, b.y))
+
+	if a.x == b.x:
+		return Vector2(a.x, clamped_y)
+
+	if a.y == b.y:
+		return Vector2(clamped_x, a.y)
+
+	var m := (b.y - a.y) / (b.x - a.x)
+
+	if abs(m) > 1:
+		var x := m * clamped_y + (a.x - m * a.y)
+		return Vector2(x, clamped_y)
+	else:
+		var y := m * clamped_x + (a.y - m * a.x)
+		return Vector2(clamped_x, y)
 
 
 func _update_curve() -> void:
