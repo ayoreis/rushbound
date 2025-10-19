@@ -7,19 +7,6 @@ enum Diagonal {
 	DESCENDING,
 }
 
-var width: int = ProjectSettings.get_setting("display/window/size/viewport_width")
-var height: int = ProjectSettings.get_setting("display/window/size/viewport_height")
-var viewport_size := Vector2i(width, height)
-
-@export var size := viewport_size:
-	set(new_size):
-		if not is_node_ready():
-			await ready
-
-		size = new_size.max(viewport_size)
-		_rectangle_shape.size = size
-		_update_curve()
-
 @export var diagonal: Diagonal:
 	set(new_diagonal):
 		if not is_node_ready():
@@ -28,10 +15,18 @@ var viewport_size := Vector2i(width, height)
 		diagonal = new_diagonal
 		_update_curve()
 
+var width: int = ProjectSettings.get_setting("display/window/size/viewport_width")
+var height: int = ProjectSettings.get_setting("display/window/size/viewport_height")
+var viewport_size := Vector2i(width, height)
+
 @onready var _collision_shape: CollisionShape2D = $CollisionShape2D
 @onready var _rectangle_shape: RectangleShape2D = _collision_shape.shape
 @onready var _path: Path2D = $Path2D
 @onready var _curve := _path.curve
+
+
+func _ready() -> void:
+	_update_curve()
 
 
 func get_closest_point(to_point: Vector2) -> Vector2:
@@ -58,11 +53,13 @@ func get_closest_point(to_point: Vector2) -> Vector2:
 
 
 func _update_curve() -> void:
+	var anchor := _rectangle_shape.size as Vector2i - viewport_size
+
 	match diagonal:
 		Diagonal.ASCENDING:
-			_curve.set_point_position(0, (size - viewport_size) / Vector2i(-2, 2))
-			_curve.set_point_position(1, (size - viewport_size) / Vector2i(2, -2))
+			_curve.set_point_position(0, anchor / Vector2i(-2, 2))
+			_curve.set_point_position(1, anchor / Vector2i(2, -2))
 
 		Diagonal.DESCENDING:
-			_curve.set_point_position(0, (size - viewport_size) / -2)
-			_curve.set_point_position(1, (size - viewport_size) / 2)
+			_curve.set_point_position(0, anchor / -2)
+			_curve.set_point_position(1, anchor / 2)
