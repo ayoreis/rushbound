@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://c5vjmaxosdxge"]
+
+[ext_resource type="Script" uid="uid://ds7ehowwfgh4w" path="res://scripts/ipod_control.gd" id="1_iuw07"]
+[ext_resource type="AudioStream" uid="uid://ba8j3tt4ayy7o" path="res://resources/audio/default-button-press.wav" id="2_c3wgg"]
+[ext_resource type="AudioStream" uid="uid://g50mpmb365pv" path="res://resources/audio/default-button-release.wav" id="3_qv8a8"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jv33l"]
+resource_local_to_scene = true
+
+[node name="ToggleTextureRect" type="TextureRect"]
+stretch_mode = 2
+script = ExtResource("1_iuw07")
+sprite_frames = SubResource("SpriteFrames_jv33l")
+press_stream = ExtResource("2_c3wgg")
+release_stream = ExtResource("3_qv8a8")
+
+[node name="PressAudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_c3wgg")
+
+[node name="ReleaseAudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_qv8a8")
