@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Rushbound"
-run/main_scene="uid://bb00pm51xpacn"
+run/main_scene="uid://ptrhcnpxicmj"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 
 [autoload]
@@ -65,3 +65,4 @@ jump={
 textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+environment/defaults/default_clear_color=Color(0.9411765, 0.9647059, 0.9411765, 1)

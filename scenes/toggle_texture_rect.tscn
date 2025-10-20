@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://c5vjmaxosdxge"]
+
+[ext_resource type="Script" uid="uid://ds7ehowwfgh4w" path="res://scripts/toggle_texture_rect.gd" id="1_iuw07"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jv33l"]
+resource_local_to_scene = true
+
+[node name="ToggleTextureRect" type="TextureRect"]
+stretch_mode = 2
+script = ExtResource("1_iuw07")
+sprite_frames = SubResource("SpriteFrames_jv33l")

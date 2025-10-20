@@ -1,0 +1,209 @@
+[gd_scene load_steps=27 format=3 uid="uid://ptrhcnpxicmj"]
+
+[ext_resource type="Texture2D" uid="uid://pg7ex3gchc4f" path="res://resources/ipod-base.png" id="1_twpsu"]
+[ext_resource type="Texture2D" uid="uid://c3h6whop6jom4" path="res://resources/menu-button.png" id="2_lrqlo"]
+[ext_resource type="PackedScene" uid="uid://c5vjmaxosdxge" path="res://scenes/toggle_texture_rect.tscn" id="2_twpsu"]
+[ext_resource type="Texture2D" uid="uid://cho6dibjlp231" path="res://resources/next-fast-forward.png" id="4_jh1ax"]
+[ext_resource type="Texture2D" uid="uid://b2837ol2qx47a" path="res://resources/play-pause.png" id="5_kycxp"]
+[ext_resource type="Texture2D" uid="uid://do8demo2e60h4" path="res://resources/previous-rewind.png" id="6_kycxp"]
+[ext_resource type="Texture2D" uid="uid://xla01shyw243" path="res://resources/scroll-wheel.png" id="7_5sfjl"]
+[ext_resource type="Texture2D" uid="uid://bo5isxm8n1get" path="res://resources/select-button.png" id="8_3hfy5"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lrqlo"]
+atlas = ExtResource("2_lrqlo")
+region = Rect2(0, 0, 58, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sqa0i"]
+atlas = ExtResource("2_lrqlo")
+region = Rect2(0, 20, 58, 20)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jh1ax"]
+resource_local_to_scene = true
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lrqlo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sqa0i")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j287u"]
+atlas = ExtResource("4_jh1ax")
+region = Rect2(0, 0, 20, 58)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5sfjl"]
+atlas = ExtResource("4_jh1ax")
+region = Rect2(20, 0, 20, 58)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lrqlo"]
+resource_local_to_scene = true
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j287u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5sfjl")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3hfy5"]
+atlas = ExtResource("5_kycxp")
+region = Rect2(0, 0, 58, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7pvxh"]
+atlas = ExtResource("5_kycxp")
+region = Rect2(0, 20, 58, 20)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_y3xxt"]
+resource_local_to_scene = true
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3hfy5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7pvxh")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y3xxt"]
+atlas = ExtResource("6_kycxp")
+region = Rect2(0, 0, 20, 58)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xsp7o"]
+atlas = ExtResource("6_kycxp")
+region = Rect2(20, 0, 20, 58)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_l5cgh"]
+resource_local_to_scene = true
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y3xxt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xsp7o")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l5cgh"]
+atlas = ExtResource("7_5sfjl")
+region = Rect2(0, 0, 62, 62)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vgks2"]
+atlas = ExtResource("7_5sfjl")
+region = Rect2(62, 0, 62, 62)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kycxp"]
+resource_local_to_scene = true
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l5cgh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vgks2")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dylgi"]
+atlas = ExtResource("8_3hfy5")
+region = Rect2(0, 0, 22, 22)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jrhyn"]
+atlas = ExtResource("8_3hfy5")
+region = Rect2(22, 0, 22, 22)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_j287u"]
+resource_local_to_scene = true
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dylgi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jrhyn")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Root" type="Node"]
+
+[node name="iPod" type="TextureRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_twpsu")
+
+[node name="MenuButton" parent="iPod" instance=ExtResource("2_twpsu")]
+layout_mode = 0
+offset_left = 19.0
+offset_top = 67.0
+offset_right = 77.0
+offset_bottom = 87.0
+texture = SubResource("AtlasTexture_lrqlo")
+sprite_frames = SubResource("SpriteFrames_jh1ax")
+
+[node name="NextFastForward" parent="iPod" instance=ExtResource("2_twpsu")]
+layout_mode = 0
+offset_left = 69.0
+offset_top = 79.0
+offset_right = 89.0
+offset_bottom = 137.0
+texture = SubResource("AtlasTexture_j287u")
+sprite_frames = SubResource("SpriteFrames_lrqlo")
+
+[node name="PlayPause" parent="iPod" instance=ExtResource("2_twpsu")]
+layout_mode = 0
+offset_left = 19.0
+offset_top = 129.0
+offset_right = 77.0
+offset_bottom = 149.0
+texture = SubResource("AtlasTexture_3hfy5")
+sprite_frames = SubResource("SpriteFrames_y3xxt")
+
+[node name="PreviousRewind" parent="iPod" instance=ExtResource("2_twpsu")]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 79.0
+offset_right = 27.0
+offset_bottom = 137.0
+texture = SubResource("AtlasTexture_y3xxt")
+sprite_frames = SubResource("SpriteFrames_l5cgh")
+
+[node name="ScrollWheel" parent="iPod" instance=ExtResource("2_twpsu")]
+layout_mode = 0
+offset_left = 17.0
+offset_top = 77.0
+offset_right = 79.0
+offset_bottom = 139.0
+texture = SubResource("AtlasTexture_l5cgh")
+sprite_frames = SubResource("SpriteFrames_kycxp")
+
+[node name="SelectButton" parent="iPod" instance=ExtResource("2_twpsu")]
+layout_mode = 0
+offset_left = 37.0
+offset_top = 97.0
+offset_right = 59.0
+offset_bottom = 119.0
+texture = SubResource("AtlasTexture_dylgi")
+sprite_frames = SubResource("SpriteFrames_j287u")
