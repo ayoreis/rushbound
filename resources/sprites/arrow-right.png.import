@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://3s6jj287qeg5"
-path="res://.godot/imported/ipod.png-d3b89edb3cdef3644153454b1ac8964a.ctex"
+uid="uid://gs5qpm1amge3"
+path="res://.godot/imported/arrow-right.png-5a3f3200e8d74d44e15a846b64cc6152.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://resources/ipod.png"
-dest_files=["res://.godot/imported/ipod.png-d3b89edb3cdef3644153454b1ac8964a.ctex"]
+source_file="res://resources/sprites/arrow-right.png"
+dest_files=["res://.godot/imported/arrow-right.png-5a3f3200e8d74d44e15a846b64cc6152.ctex"]
 
 [params]
 
