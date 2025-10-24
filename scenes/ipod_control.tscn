@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://c5vjmaxosdxge"]
 
 [ext_resource type="Script" uid="uid://ds7ehowwfgh4w" path="res://scripts/ipod_control.gd" id="1_iuw07"]
-[ext_resource type="AudioStream" uid="uid://ba8j3tt4ayy7o" path="res://resources/audio/default-button-press.wav" id="2_c3wgg"]
-[ext_resource type="AudioStream" uid="uid://g50mpmb365pv" path="res://resources/audio/default-button-release.wav" id="3_qv8a8"]
+[ext_resource type="AudioStream" uid="uid://ba8j3tt4ayy7o" path="res://resources/sounds/default-button-press.wav" id="2_c3wgg"]
+[ext_resource type="AudioStream" uid="uid://g50mpmb365pv" path="res://resources/sounds/default-button-release.wav" id="3_qv8a8"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_jv33l"]
 resource_local_to_scene = true

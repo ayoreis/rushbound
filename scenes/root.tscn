@@ -1,16 +1,80 @@
-[gd_scene load_steps=30 format=3 uid="uid://ptrhcnpxicmj"]
+[gd_scene load_steps=40 format=3 uid="uid://ptrhcnpxicmj"]
 
-[ext_resource type="Script" uid="uid://cbe2ese6g7uqt" path="res://scripts/root.gd" id="1_3hfy5"]
 [ext_resource type="Texture2D" uid="uid://pg7ex3gchc4f" path="res://resources/sprites/ipod.png" id="1_twpsu"]
+[ext_resource type="Script" uid="uid://fqlli3e6pl" path="res://scripts/pocket.gd" id="2_l5cgh"]
 [ext_resource type="PackedScene" uid="uid://c5vjmaxosdxge" path="res://scenes/ipod_control.tscn" id="2_twpsu"]
+[ext_resource type="Script" uid="uid://c6j3abwnu8qqr" path="res://scripts/resources/playlist.gd" id="4_dylgi"]
+[ext_resource type="Script" uid="uid://dgvtnfi5xweea" path="res://scripts/ipod.gd" id="4_vgks2"]
 [ext_resource type="Texture2D" uid="uid://c3h6whop6jom4" path="res://resources/sprites/menu-button.png" id="4_y3xxt"]
+[ext_resource type="Script" uid="uid://sx037xdr8mv6" path="res://scripts/resources/track.gd" id="5_jrhyn"]
 [ext_resource type="Texture2D" uid="uid://cho6dibjlp231" path="res://resources/sprites/next-fast-forward.png" id="5_y3xxt"]
 [ext_resource type="Texture2D" uid="uid://b2837ol2qx47a" path="res://resources/sprites/play-pause.png" id="6_3hfy5"]
 [ext_resource type="Texture2D" uid="uid://do8demo2e60h4" path="res://resources/sprites/previous-rewind.png" id="7_7pvxh"]
 [ext_resource type="Texture2D" uid="uid://xla01shyw243" path="res://resources/sprites/scroll-wheel.png" id="8_7pvxh"]
 [ext_resource type="Texture2D" uid="uid://bo5isxm8n1get" path="res://resources/sprites/select-button.png" id="9_y3xxt"]
-[ext_resource type="AudioStream" uid="uid://dgq6nc0jrt8g" path="res://resources/audio/select-button-press.wav" id="12_l5cgh"]
-[ext_resource type="AudioStream" uid="uid://dq6pe8irvv3u8" path="res://resources/audio/select-button-release.wav" id="13_vgks2"]
+[ext_resource type="AudioStream" uid="uid://dgq6nc0jrt8g" path="res://resources/sounds/select-button-press.wav" id="12_l5cgh"]
+[ext_resource type="PackedScene" uid="uid://bjht3natywdf6" path="res://scenes/main_menu.tscn" id="13_l5cgh"]
+[ext_resource type="AudioStream" uid="uid://dq6pe8irvv3u8" path="res://resources/sounds/select-button-release.wav" id="13_vgks2"]
+
+[sub_resource type="Animation" id="Animation_dylgi"]
+resource_name = "toggle"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 169)]
+}
+
+[sub_resource type="Animation" id="Animation_jrhyn"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jrhyn"]
+_data = {
+&"RESET": SubResource("Animation_jrhyn"),
+&"toggle": SubResource("Animation_dylgi")
+}
+
+[sub_resource type="Resource" id="Resource_2gtyr"]
+script = ExtResource("5_jrhyn")
+title = "Exit Music (For a Film)"
+artist = "Radiohead"
+album = "OK Computer"
+stream = "uid://c1xxl3c5hefa6"
+scene = "uid://clbvcccfwyu3c"
+metadata/_custom_type_script = "uid://sx037xdr8mv6"
+
+[sub_resource type="Resource" id="Resource_hkdqf"]
+script = ExtResource("5_jrhyn")
+title = "Wires"
+artist = "The Neighbourhood"
+album = "I'm Sorry..."
+stream = "uid://cgxmij5172com"
+scene = "uid://dwtaihr38p4os"
+metadata/_custom_type_script = "uid://sx037xdr8mv6"
+
+[sub_resource type="Resource" id="Resource_log26"]
+script = ExtResource("4_dylgi")
+title = "The Runaway"
+tracks = Array[ExtResource("5_jrhyn")]([SubResource("Resource_2gtyr"), SubResource("Resource_hkdqf")])
+metadata/_custom_type_script = "uid://c6j3abwnu8qqr"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_log26"]
 atlas = ExtResource("4_y3xxt")
@@ -151,19 +215,45 @@ animations = [{
 }]
 
 [node name="Root" type="Node"]
-script = ExtResource("1_3hfy5")
 
-[node name="iPod" type="TextureRect" parent="."]
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="Pocket" type="CanvasLayer" parent="."]
+process_mode = 3
+script = ExtResource("2_l5cgh")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Pocket"]
+libraries = {
+&"": SubResource("AnimationLibrary_jrhyn")
+}
+
+[node name="CenterContainer" type="CenterContainer" parent="Pocket"]
+process_mode = 2
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="iPod" type="TextureRect" parent="Pocket/CenterContainer"]
+unique_name_in_owner = true
+layout_mode = 2
 texture = ExtResource("1_twpsu")
+script = ExtResource("4_vgks2")
+playlists = Array[ExtResource("4_dylgi")]([SubResource("Resource_log26")])
 
-[node name="ScrollTimer" type="Timer" parent="iPod"]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Pocket/CenterContainer/iPod"]
+process_mode = 3
+
+[node name="Controls" type="Control" parent="Pocket/CenterContainer/iPod"]
+anchors_preset = 0
+metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
+
+[node name="ScrollTimer" type="Timer" parent="Pocket/CenterContainer/iPod/Controls"]
 unique_name_in_owner = true
 wait_time = 0.1
 one_shot = true
 
-[node name="MenuButton" parent="iPod" instance=ExtResource("2_twpsu")]
+[node name="MenuButton" parent="Pocket/CenterContainer/iPod/Controls" instance=ExtResource("2_twpsu")]
 unique_name_in_owner = true
 layout_mode = 0
 offset_left = 19.0
@@ -173,7 +263,7 @@ offset_bottom = 87.0
 texture = SubResource("AtlasTexture_log26")
 sprite_frames = SubResource("SpriteFrames_jh1ax")
 
-[node name="NextFastForward" parent="iPod" instance=ExtResource("2_twpsu")]
+[node name="NextFastForward" parent="Pocket/CenterContainer/iPod/Controls" instance=ExtResource("2_twpsu")]
 unique_name_in_owner = true
 layout_mode = 0
 offset_left = 69.0
@@ -183,7 +273,7 @@ offset_bottom = 137.0
 texture = SubResource("AtlasTexture_ya6yc")
 sprite_frames = SubResource("SpriteFrames_lrqlo")
 
-[node name="PlayPause" parent="iPod" instance=ExtResource("2_twpsu")]
+[node name="PlayPause" parent="Pocket/CenterContainer/iPod/Controls" instance=ExtResource("2_twpsu")]
 unique_name_in_owner = true
 layout_mode = 0
 offset_left = 19.0
@@ -193,7 +283,7 @@ offset_bottom = 149.0
 texture = SubResource("AtlasTexture_y3xxt")
 sprite_frames = SubResource("SpriteFrames_y3xxt")
 
-[node name="PreviousRewind" parent="iPod" instance=ExtResource("2_twpsu")]
+[node name="PreviousRewind" parent="Pocket/CenterContainer/iPod/Controls" instance=ExtResource("2_twpsu")]
 unique_name_in_owner = true
 layout_mode = 0
 offset_left = 7.0
@@ -203,7 +293,7 @@ offset_bottom = 137.0
 texture = SubResource("AtlasTexture_34frw")
 sprite_frames = SubResource("SpriteFrames_l5cgh")
 
-[node name="ScrollWheel" parent="iPod" instance=ExtResource("2_twpsu")]
+[node name="ScrollWheel" parent="Pocket/CenterContainer/iPod/Controls" instance=ExtResource("2_twpsu")]
 unique_name_in_owner = true
 layout_mode = 0
 offset_left = 17.0
@@ -215,7 +305,7 @@ sprite_frames = SubResource("SpriteFrames_kycxp")
 press_stream = null
 release_stream = null
 
-[node name="SelectButton" parent="iPod" instance=ExtResource("2_twpsu")]
+[node name="SelectButton" parent="Pocket/CenterContainer/iPod/Controls" instance=ExtResource("2_twpsu")]
 unique_name_in_owner = true
 layout_mode = 0
 offset_left = 37.0
@@ -226,3 +316,53 @@ texture = SubResource("AtlasTexture_dylgi")
 sprite_frames = SubResource("SpriteFrames_j287u")
 press_stream = ExtResource("12_l5cgh")
 release_stream = ExtResource("13_vgks2")
+
+[node name="GUI" type="VBoxContainer" parent="Pocket/CenterContainer/iPod"]
+layout_mode = 0
+offset_left = 17.0
+offset_top = 8.0
+offset_right = 79.0
+offset_bottom = 59.0
+metadata/_edit_group_ = true
+
+[node name="Label" type="Label" parent="Pocket/CenterContainer/iPod/GUI"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Rushbound"
+
+[node name="HSeparator" type="HSeparator" parent="Pocket/CenterContainer/iPod/GUI"]
+layout_mode = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Pocket/CenterContainer/iPod/GUI"]
+clip_contents = false
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="MainMenu" parent="Pocket/CenterContainer/iPod/GUI/ScrollContainer" instance=ExtResource("13_l5cgh")]
+layout_mode = 2
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1.0
+offset_top = -1.0
+offset_right = 1.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
+handle_input_locally = false
+snap_2d_transforms_to_pixel = true
+canvas_item_default_texture_filter = 0
+size = Vector2i(322, 182)
+render_target_update_mode = 0
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(160, 90)
+
+[connection signal="animation_finished" from="Pocket/AnimationPlayer" to="Pocket" method="_on_animation_player_animation_finished"]
+[connection signal="animation_started" from="Pocket/AnimationPlayer" to="Pocket" method="_on_animation_player_animation_started"]
