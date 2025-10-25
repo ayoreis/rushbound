@@ -6,7 +6,8 @@ const now_playing_screen = preload("res://scenes/now_playing_screen.tscn")
 
 var playlist: Playlist
 
-@onready var ipod: iPod = $"../../%iPod"
+@onready var ipod: iPod = $"../%iPod"
+@onready var sub_viewport_container: SubViewportContainer = $"../%SubViewportContainer"
 
 func _ready() -> void:
 	for track in playlist.tracks:
@@ -18,5 +19,5 @@ func _ready() -> void:
 			screen.track = track
 			ipod.push_screen("Now Playing", screen)
 
-		item.connect("pressed", _on_menu_item_pressed)
+		item.pressed.connect(_on_menu_item_pressed)
 		add_child(item)

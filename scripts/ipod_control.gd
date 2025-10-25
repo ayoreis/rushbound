@@ -41,7 +41,7 @@ var toggle: bool:
 
 
 func _ready() -> void:
-	sprite_frames.connect("changed", _update_texture)
+	sprite_frames.changed.connect(_update_texture)
 
 
 func _update_texture() -> void:

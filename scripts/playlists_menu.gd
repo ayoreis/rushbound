@@ -6,7 +6,7 @@ const playlist_menu = preload("res://scenes/playlist_menu.tscn")
 
 @export var playlists: Array[Playlist]
 
-@onready var ipod: iPod = $"../../%iPod"
+@onready var ipod: iPod = $"../%iPod"
 
 
 func _ready() -> void:
@@ -19,5 +19,5 @@ func _ready() -> void:
 			menu.playlist = playlist
 			ipod.push_screen(playlist.title, menu)
 
-		item.connect("pressed", _on_menu_item_pressed)
+		item.pressed.connect(_on_menu_item_pressed)
 		add_child(item)

@@ -5,6 +5,7 @@ extends TextureRect
 
 var screen_stack: Array[Dictionary] = []
 
+@onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
 @onready var scroll_timer: Timer = %ScrollTimer
 @onready var menu_button: iPodControl = %MenuButton
 @onready var next_fast_forward: iPodControl = %NextFastForward
@@ -17,6 +18,7 @@ var screen_stack: Array[Dictionary] = []
 
 
 func _ready() -> void:
+	Signals.track_played.connect(_on_track_played)
 	grab_focus_child()
 
 
@@ -35,10 +37,15 @@ func _process(_delta: float) -> void:
 	select_button.toggle = Input.is_action_pressed("select")
 
 
+func _on_track_played(track: Track) -> void:
+	audio_stream_player.stream = load(track.stream)
+	audio_stream_player.play()
+
+
 func push_screen(title: String, node: Node) -> void:
-	var previous := scroll_container.get_child(0)
-	scroll_container.remove_child(previous)
-	screen_stack.push_front({ title = title, node = previous })
+	var previous_node := scroll_container.get_child(0)
+	scroll_container.remove_child(previous_node)
+	screen_stack.push_front({ title = label.text, node = previous_node })
 	_update_screen(title, node)
 
 

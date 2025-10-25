@@ -17,6 +17,7 @@ config/features=PackedStringArray("4.5", "GL Compatibility")
 [autoload]
 
 MouseCapture="*res://scripts/mouse_capture.gd"
+Signals="*res://scripts/signals.gd"
 
 [debug]
 

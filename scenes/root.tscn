@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://ptrhcnpxicmj"]
+[gd_scene load_steps=41 format=3 uid="uid://ptrhcnpxicmj"]
 
 [ext_resource type="Texture2D" uid="uid://pg7ex3gchc4f" path="res://resources/sprites/ipod.png" id="1_twpsu"]
 [ext_resource type="Script" uid="uid://fqlli3e6pl" path="res://scripts/pocket.gd" id="2_l5cgh"]
@@ -15,21 +15,7 @@
 [ext_resource type="AudioStream" uid="uid://dgq6nc0jrt8g" path="res://resources/sounds/select-button-press.wav" id="12_l5cgh"]
 [ext_resource type="PackedScene" uid="uid://bjht3natywdf6" path="res://scenes/main_menu.tscn" id="13_l5cgh"]
 [ext_resource type="AudioStream" uid="uid://dq6pe8irvv3u8" path="res://resources/sounds/select-button-release.wav" id="13_vgks2"]
-
-[sub_resource type="Animation" id="Animation_dylgi"]
-resource_name = "toggle"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:offset")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(0, 0), Vector2(0, 169)]
-}
+[ext_resource type="Script" uid="uid://b5msw8e06xapx" path="res://scripts/sub_viewport_container.gd" id="16_jrhyn"]
 
 [sub_resource type="Animation" id="Animation_jrhyn"]
 length = 0.001
@@ -44,6 +30,21 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_dylgi"]
+resource_name = "toggle"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 169)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_jrhyn"]
@@ -343,7 +344,7 @@ horizontal_scroll_mode = 0
 layout_mode = 2
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="."]
-visible = false
+unique_name_in_owner = true
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -353,16 +354,16 @@ offset_right = 1.0
 offset_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("16_jrhyn")
 
 [node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
 handle_input_locally = false
 snap_2d_transforms_to_pixel = true
 canvas_item_default_texture_filter = 0
 size = Vector2i(322, 182)
-render_target_update_mode = 0
+render_target_update_mode = 4
 
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(160, 90)
+[node name="Node2D" type="Node2D" parent="SubViewportContainer/SubViewport"]
 
 [connection signal="animation_finished" from="Pocket/AnimationPlayer" to="Pocket" method="_on_animation_player_animation_finished"]
 [connection signal="animation_started" from="Pocket/AnimationPlayer" to="Pocket" method="_on_animation_player_animation_started"]

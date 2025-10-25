@@ -1,3 +1,12 @@
-[gd_scene format=3 uid="uid://dwtaihr38p4os"]
+[gd_scene load_steps=2 format=3 uid="uid://dwtaihr38p4os"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_moxyl"]
 
 [node name="Wires" type="Node2D"]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(160, 90)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("WorldBoundaryShape2D_moxyl")
