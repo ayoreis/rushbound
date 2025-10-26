@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://ba8j3tt4ayy7o"
-path="res://.godot/imported/default-button-press.wav-f597a3107e70edaf81dc0fcdf96c555e.sample"
+path="res://.godot/imported/default-button-press.wav-ce51c1ce30b4c73252fca6b0c504bf7c.sample"
 
 [deps]
 
-source_file="res://resources/sounds/default-button-press.wav"
-dest_files=["res://.godot/imported/default-button-press.wav-f597a3107e70edaf81dc0fcdf96c555e.sample"]
+source_file="res://assets/sounds/default-button-press.wav"
+dest_files=["res://.godot/imported/default-button-press.wav-ce51c1ce30b4c73252fca6b0c504bf7c.sample"]
 
 [params]
 

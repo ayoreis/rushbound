@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://b84htt7kdl5w6"]
 
 [ext_resource type="Script" uid="uid://thh7c3l27qxm" path="res://scripts/menu_item.gd" id="1_34sh5"]
-[ext_resource type="AudioStream" uid="uid://cbbamxicsvmc1" path="res://resources/sounds/ui.wav" id="2_m5xae"]
+[ext_resource type="AudioStream" uid="uid://cbbamxicsvmc1" path="res://assets/sounds/ui.wav" id="2_m5xae"]
 
 [node name="MenuItem" type="Button"]
 offset_right = 8.0
@@ -14,4 +14,4 @@ script = ExtResource("1_34sh5")
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_m5xae")
 
-[connection signal="focus_entered" from="." to="." method="_on_focus_entered"]
+[connection signal="focus_exited" from="." to="." method="_on_focus_exited"]

@@ -1,21 +1,19 @@
-[gd_scene load_steps=41 format=3 uid="uid://ptrhcnpxicmj"]
+[gd_scene load_steps=38 format=3 uid="uid://ptrhcnpxicmj"]
 
-[ext_resource type="Texture2D" uid="uid://pg7ex3gchc4f" path="res://resources/sprites/ipod.png" id="1_twpsu"]
-[ext_resource type="Script" uid="uid://fqlli3e6pl" path="res://scripts/pocket.gd" id="2_l5cgh"]
+[ext_resource type="Texture2D" uid="uid://pg7ex3gchc4f" path="res://assets/sprites/ipod.png" id="1_twpsu"]
+[ext_resource type="Script" uid="uid://dlqf36hbs4kcg" path="res://scripts/pocket.gd" id="2_l5cgh"]
 [ext_resource type="PackedScene" uid="uid://c5vjmaxosdxge" path="res://scenes/ipod_control.tscn" id="2_twpsu"]
-[ext_resource type="Script" uid="uid://c6j3abwnu8qqr" path="res://scripts/resources/playlist.gd" id="4_dylgi"]
-[ext_resource type="Script" uid="uid://dgvtnfi5xweea" path="res://scripts/ipod.gd" id="4_vgks2"]
-[ext_resource type="Texture2D" uid="uid://c3h6whop6jom4" path="res://resources/sprites/menu-button.png" id="4_y3xxt"]
-[ext_resource type="Script" uid="uid://sx037xdr8mv6" path="res://scripts/resources/track.gd" id="5_jrhyn"]
-[ext_resource type="Texture2D" uid="uid://cho6dibjlp231" path="res://resources/sprites/next-fast-forward.png" id="5_y3xxt"]
-[ext_resource type="Texture2D" uid="uid://b2837ol2qx47a" path="res://resources/sprites/play-pause.png" id="6_3hfy5"]
-[ext_resource type="Texture2D" uid="uid://do8demo2e60h4" path="res://resources/sprites/previous-rewind.png" id="7_7pvxh"]
-[ext_resource type="Texture2D" uid="uid://xla01shyw243" path="res://resources/sprites/scroll-wheel.png" id="8_7pvxh"]
-[ext_resource type="Texture2D" uid="uid://bo5isxm8n1get" path="res://resources/sprites/select-button.png" id="9_y3xxt"]
-[ext_resource type="AudioStream" uid="uid://dgq6nc0jrt8g" path="res://resources/sounds/select-button-press.wav" id="12_l5cgh"]
+[ext_resource type="AudioStream" uid="uid://cbbamxicsvmc1" path="res://assets/sounds/ui.wav" id="4_jrhyn"]
+[ext_resource type="Script" uid="uid://dmcwpyjuqh6o" path="res://scripts/ipod.gd" id="4_vgks2"]
+[ext_resource type="Texture2D" uid="uid://c3h6whop6jom4" path="res://assets/sprites/menu-button.png" id="4_y3xxt"]
+[ext_resource type="Texture2D" uid="uid://cho6dibjlp231" path="res://assets/sprites/next-fast-forward.png" id="5_y3xxt"]
+[ext_resource type="Texture2D" uid="uid://b2837ol2qx47a" path="res://assets/sprites/play-pause.png" id="6_3hfy5"]
+[ext_resource type="Texture2D" uid="uid://do8demo2e60h4" path="res://assets/sprites/previous-rewind.png" id="7_7pvxh"]
+[ext_resource type="Texture2D" uid="uid://xla01shyw243" path="res://assets/sprites/scroll-wheel.png" id="8_7pvxh"]
+[ext_resource type="Texture2D" uid="uid://bo5isxm8n1get" path="res://assets/sprites/select-button.png" id="9_y3xxt"]
+[ext_resource type="AudioStream" uid="uid://dgq6nc0jrt8g" path="res://assets/sounds/select-button-press.wav" id="12_l5cgh"]
 [ext_resource type="PackedScene" uid="uid://bjht3natywdf6" path="res://scenes/main_menu.tscn" id="13_l5cgh"]
-[ext_resource type="AudioStream" uid="uid://dq6pe8irvv3u8" path="res://resources/sounds/select-button-release.wav" id="13_vgks2"]
-[ext_resource type="Script" uid="uid://b5msw8e06xapx" path="res://scripts/sub_viewport_container.gd" id="16_jrhyn"]
+[ext_resource type="AudioStream" uid="uid://dq6pe8irvv3u8" path="res://assets/sounds/select-button-release.wav" id="13_vgks2"]
 
 [sub_resource type="Animation" id="Animation_jrhyn"]
 length = 0.001
@@ -34,6 +32,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_dylgi"]
 resource_name = "toggle"
+length = 0.3
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -41,7 +40,7 @@ tracks/0/path = NodePath(".:offset")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
+"times": PackedFloat32Array(0, 0.3),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(0, 0), Vector2(0, 169)]
@@ -53,30 +52,6 @@ _data = {
 &"toggle": SubResource("Animation_dylgi")
 }
 
-[sub_resource type="Resource" id="Resource_2gtyr"]
-script = ExtResource("5_jrhyn")
-title = "Exit Music (For a Film)"
-artist = "Radiohead"
-album = "OK Computer"
-stream = "uid://c1xxl3c5hefa6"
-scene = "uid://clbvcccfwyu3c"
-metadata/_custom_type_script = "uid://sx037xdr8mv6"
-
-[sub_resource type="Resource" id="Resource_hkdqf"]
-script = ExtResource("5_jrhyn")
-title = "Wires"
-artist = "The Neighbourhood"
-album = "I'm Sorry..."
-stream = "uid://cgxmij5172com"
-scene = "uid://dwtaihr38p4os"
-metadata/_custom_type_script = "uid://sx037xdr8mv6"
-
-[sub_resource type="Resource" id="Resource_log26"]
-script = ExtResource("4_dylgi")
-title = "The Runaway"
-tracks = Array[ExtResource("5_jrhyn")]([SubResource("Resource_2gtyr"), SubResource("Resource_hkdqf")])
-metadata/_custom_type_script = "uid://c6j3abwnu8qqr"
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_log26"]
 atlas = ExtResource("4_y3xxt")
 region = Rect2(0, 0, 58, 20)
@@ -85,7 +60,7 @@ region = Rect2(0, 0, 58, 20)
 atlas = ExtResource("4_y3xxt")
 region = Rect2(0, 20, 58, 20)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_jh1ax"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_vgks2"]
 resource_local_to_scene = true
 animations = [{
 "frames": [{
@@ -108,7 +83,7 @@ region = Rect2(0, 0, 20, 58)
 atlas = ExtResource("5_y3xxt")
 region = Rect2(20, 0, 20, 58)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_lrqlo"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_dylgi"]
 resource_local_to_scene = true
 animations = [{
 "frames": [{
@@ -131,7 +106,7 @@ region = Rect2(0, 0, 58, 20)
 atlas = ExtResource("6_3hfy5")
 region = Rect2(0, 20, 58, 20)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_y3xxt"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_jrhyn"]
 resource_local_to_scene = true
 animations = [{
 "frames": [{
@@ -154,7 +129,7 @@ region = Rect2(0, 0, 20, 58)
 atlas = ExtResource("7_7pvxh")
 region = Rect2(20, 0, 20, 58)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_l5cgh"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_log26"]
 resource_local_to_scene = true
 animations = [{
 "frames": [{
@@ -177,7 +152,7 @@ region = Rect2(0, 0, 62, 62)
 atlas = ExtResource("8_7pvxh")
 region = Rect2(62, 0, 62, 62)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_kycxp"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_gt4lb"]
 resource_local_to_scene = true
 animations = [{
 "frames": [{
@@ -200,7 +175,7 @@ region = Rect2(0, 0, 22, 22)
 atlas = ExtResource("9_y3xxt")
 region = Rect2(22, 0, 22, 22)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_j287u"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_ya6yc"]
 resource_local_to_scene = true
 animations = [{
 "frames": [{
@@ -215,6 +190,30 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="AudioStreamSynchronized" id="AudioStreamSynchronized_vgks2"]
+stream_count = 2
+stream_0/stream = ExtResource("12_l5cgh")
+stream_0/volume = 0.0
+stream_1/stream = ExtResource("4_jrhyn")
+stream_1/volume = 0.0
+
+[sub_resource type="GDScript" id="GDScript_log26"]
+resource_name = "sub_viewport_container"
+script/source = "extends SubViewportContainer
+
+@onready var sub_viewport: SubViewport = $SubViewport
+
+
+func _ready() -> void:
+	Signals.track_selected.connect(_on_track_played)
+
+
+func _on_track_played(track: Track) -> void:
+	sub_viewport.get_child(0).queue_free()
+	var scene: PackedScene = load(track.scene)
+	sub_viewport.add_child(scene.instantiate())
+"
+
 [node name="Root" type="Node"]
 
 [node name="Pocket" type="CanvasLayer" parent="."]
@@ -226,35 +225,37 @@ libraries = {
 &"": SubResource("AnimationLibrary_jrhyn")
 }
 
-[node name="CenterContainer" type="CenterContainer" parent="Pocket"]
+[node name="iPod" type="TextureRect" parent="Pocket"]
+unique_name_in_owner = true
 process_mode = 2
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -48.0
+offset_top = -79.0
+offset_right = 48.0
+offset_bottom = 79.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="iPod" type="TextureRect" parent="Pocket/CenterContainer"]
-unique_name_in_owner = true
-layout_mode = 2
 texture = ExtResource("1_twpsu")
 script = ExtResource("4_vgks2")
-playlists = Array[ExtResource("4_dylgi")]([SubResource("Resource_log26")])
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Pocket/CenterContainer/iPod"]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Pocket/iPod"]
 process_mode = 3
+stream = ExtResource("4_jrhyn")
 
-[node name="Controls" type="Control" parent="Pocket/CenterContainer/iPod"]
+[node name="Controls" type="Control" parent="Pocket/iPod"]
 anchors_preset = 0
-metadata/_edit_lock_ = true
 metadata/_edit_group_ = true
 
-[node name="ScrollTimer" type="Timer" parent="Pocket/CenterContainer/iPod/Controls"]
+[node name="ScrollTimer" type="Timer" parent="Pocket/iPod/Controls"]
 unique_name_in_owner = true
 wait_time = 0.1
 one_shot = true
 
-[node name="MenuButton" parent="Pocket/CenterContainer/iPod/Controls" instance=ExtResource("2_twpsu")]
+[node name="MenuButton" parent="Pocket/iPod/Controls" instance=ExtResource("2_twpsu")]
 unique_name_in_owner = true
 layout_mode = 0
 offset_left = 19.0
@@ -262,9 +263,10 @@ offset_top = 67.0
 offset_right = 77.0
 offset_bottom = 87.0
 texture = SubResource("AtlasTexture_log26")
-sprite_frames = SubResource("SpriteFrames_jh1ax")
+action = &"menu"
+sprite_frames = SubResource("SpriteFrames_vgks2")
 
-[node name="NextFastForward" parent="Pocket/CenterContainer/iPod/Controls" instance=ExtResource("2_twpsu")]
+[node name="NextFastForward" parent="Pocket/iPod/Controls" instance=ExtResource("2_twpsu")]
 unique_name_in_owner = true
 layout_mode = 0
 offset_left = 69.0
@@ -272,9 +274,10 @@ offset_top = 79.0
 offset_right = 89.0
 offset_bottom = 137.0
 texture = SubResource("AtlasTexture_ya6yc")
-sprite_frames = SubResource("SpriteFrames_lrqlo")
+action = &"next_fast_forward"
+sprite_frames = SubResource("SpriteFrames_dylgi")
 
-[node name="PlayPause" parent="Pocket/CenterContainer/iPod/Controls" instance=ExtResource("2_twpsu")]
+[node name="PlayPause" parent="Pocket/iPod/Controls" instance=ExtResource("2_twpsu")]
 unique_name_in_owner = true
 layout_mode = 0
 offset_left = 19.0
@@ -282,9 +285,10 @@ offset_top = 129.0
 offset_right = 77.0
 offset_bottom = 149.0
 texture = SubResource("AtlasTexture_y3xxt")
-sprite_frames = SubResource("SpriteFrames_y3xxt")
+action = &"play_pause"
+sprite_frames = SubResource("SpriteFrames_jrhyn")
 
-[node name="PreviousRewind" parent="Pocket/CenterContainer/iPod/Controls" instance=ExtResource("2_twpsu")]
+[node name="PreviousRewind" parent="Pocket/iPod/Controls" instance=ExtResource("2_twpsu")]
 unique_name_in_owner = true
 layout_mode = 0
 offset_left = 7.0
@@ -292,9 +296,10 @@ offset_top = 79.0
 offset_right = 27.0
 offset_bottom = 137.0
 texture = SubResource("AtlasTexture_34frw")
-sprite_frames = SubResource("SpriteFrames_l5cgh")
+action = &"previous_rewind"
+sprite_frames = SubResource("SpriteFrames_log26")
 
-[node name="ScrollWheel" parent="Pocket/CenterContainer/iPod/Controls" instance=ExtResource("2_twpsu")]
+[node name="ScrollWheel" parent="Pocket/iPod/Controls" instance=ExtResource("2_twpsu")]
 unique_name_in_owner = true
 layout_mode = 0
 offset_left = 17.0
@@ -302,11 +307,12 @@ offset_top = 77.0
 offset_right = 79.0
 offset_bottom = 139.0
 texture = SubResource("AtlasTexture_l5cgh")
-sprite_frames = SubResource("SpriteFrames_kycxp")
+action = &""
+sprite_frames = SubResource("SpriteFrames_gt4lb")
 press_stream = null
 release_stream = null
 
-[node name="SelectButton" parent="Pocket/CenterContainer/iPod/Controls" instance=ExtResource("2_twpsu")]
+[node name="SelectButton" parent="Pocket/iPod/Controls" instance=ExtResource("2_twpsu")]
 unique_name_in_owner = true
 layout_mode = 0
 offset_left = 37.0
@@ -314,11 +320,12 @@ offset_top = 97.0
 offset_right = 59.0
 offset_bottom = 119.0
 texture = SubResource("AtlasTexture_dylgi")
-sprite_frames = SubResource("SpriteFrames_j287u")
-press_stream = ExtResource("12_l5cgh")
+action = &"select"
+sprite_frames = SubResource("SpriteFrames_ya6yc")
+press_stream = SubResource("AudioStreamSynchronized_vgks2")
 release_stream = ExtResource("13_vgks2")
 
-[node name="GUI" type="VBoxContainer" parent="Pocket/CenterContainer/iPod"]
+[node name="GUI" type="VBoxContainer" parent="Pocket/iPod"]
 layout_mode = 0
 offset_left = 17.0
 offset_top = 8.0
@@ -326,21 +333,21 @@ offset_right = 79.0
 offset_bottom = 59.0
 metadata/_edit_group_ = true
 
-[node name="Label" type="Label" parent="Pocket/CenterContainer/iPod/GUI"]
+[node name="Label" type="Label" parent="Pocket/iPod/GUI"]
 layout_mode = 2
 size_flags_horizontal = 4
 text = "Rushbound"
 
-[node name="HSeparator" type="HSeparator" parent="Pocket/CenterContainer/iPod/GUI"]
+[node name="HSeparator" type="HSeparator" parent="Pocket/iPod/GUI"]
 layout_mode = 2
 
-[node name="ScrollContainer" type="ScrollContainer" parent="Pocket/CenterContainer/iPod/GUI"]
+[node name="ScrollContainer" type="ScrollContainer" parent="Pocket/iPod/GUI"]
 clip_contents = false
 layout_mode = 2
 size_flags_vertical = 3
 horizontal_scroll_mode = 0
 
-[node name="MainMenu" parent="Pocket/CenterContainer/iPod/GUI/ScrollContainer" instance=ExtResource("13_l5cgh")]
+[node name="MainMenu" parent="Pocket/iPod/GUI/ScrollContainer" instance=ExtResource("13_l5cgh")]
 layout_mode = 2
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="."]
@@ -354,7 +361,8 @@ offset_right = 1.0
 offset_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("16_jrhyn")
+script = SubResource("GDScript_log26")
+metadata/_edit_lock_ = true
 
 [node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
 handle_input_locally = false

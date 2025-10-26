@@ -1,21 +1,30 @@
-[gd_scene load_steps=5 format=3 uid="uid://c5vjmaxosdxge"]
+[gd_scene load_steps=7 format=3 uid="uid://c5vjmaxosdxge"]
 
-[ext_resource type="Script" uid="uid://ds7ehowwfgh4w" path="res://scripts/ipod_control.gd" id="1_iuw07"]
-[ext_resource type="AudioStream" uid="uid://ba8j3tt4ayy7o" path="res://resources/sounds/default-button-press.wav" id="2_c3wgg"]
-[ext_resource type="AudioStream" uid="uid://g50mpmb365pv" path="res://resources/sounds/default-button-release.wav" id="3_qv8a8"]
+[ext_resource type="Script" uid="uid://crvwkyy70ojno" path="res://scripts/ipod_control.gd" id="1_iuw07"]
+[ext_resource type="AudioStream" uid="uid://ba8j3tt4ayy7o" path="res://assets/sounds/default-button-press.wav" id="2_qv8a8"]
+[ext_resource type="AudioStream" uid="uid://cbbamxicsvmc1" path="res://assets/sounds/ui.wav" id="3_c3wgg"]
+[ext_resource type="AudioStream" uid="uid://g50mpmb365pv" path="res://assets/sounds/default-button-release.wav" id="3_qv8a8"]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_jv33l"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_qv8a8"]
 resource_local_to_scene = true
 
-[node name="ToggleTextureRect" type="TextureRect"]
+[sub_resource type="AudioStreamSynchronized" id="AudioStreamSynchronized_qv8a8"]
+stream_count = 2
+stream_0/stream = ExtResource("2_qv8a8")
+stream_0/volume = 0.0
+stream_1/stream = ExtResource("3_c3wgg")
+stream_1/volume = 0.0
+
+[node name="iPodControl" type="TextureRect"]
 stretch_mode = 2
 script = ExtResource("1_iuw07")
-sprite_frames = SubResource("SpriteFrames_jv33l")
-press_stream = ExtResource("2_c3wgg")
+action = null
+sprite_frames = SubResource("SpriteFrames_qv8a8")
+press_stream = SubResource("AudioStreamSynchronized_qv8a8")
 release_stream = ExtResource("3_qv8a8")
 
 [node name="PressAudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("2_c3wgg")
+stream = SubResource("AudioStreamSynchronized_qv8a8")
 
 [node name="ReleaseAudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_qv8a8")

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://feujlb2utl1b"
-path="res://.godot/imported/battery.png-2cbb5b4ab4d31dfcaf337685242d3731.ctex"
+uid="uid://pg7ex3gchc4f"
+path="res://.godot/imported/ipod.png-fd8331bbea3c780e9b9c73f8f4e5525d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://resources/sprites/battery.png"
-dest_files=["res://.godot/imported/battery.png-2cbb5b4ab4d31dfcaf337685242d3731.ctex"]
+source_file="res://assets/sprites/ipod.png"
+dest_files=["res://.godot/imported/ipod.png-fd8331bbea3c780e9b9c73f8f4e5525d.ctex"]
 
 [params]
 

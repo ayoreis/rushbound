@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dne3c0oeuid31"]
 
-[ext_resource type="Script" uid="uid://c0oqluoeusn0g" path="res://scripts/now_playing_screen.gd" id="1_6ucpr"]
+[ext_resource type="Script" uid="uid://ssh85mcwj8br" path="res://scripts/now_playing_screen.gd" id="1_6ucpr"]
 
 [node name="NowPlayingScreen" type="VBoxContainer"]
 anchors_preset = 15

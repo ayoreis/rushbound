@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bjht3natywdf6"]
 
-[ext_resource type="Script" uid="uid://jkvenrpoflty" path="res://scripts/main_menu.gd" id="1_ekxnf"]
+[ext_resource type="Script" uid="uid://mapjiirjukju" path="res://scripts/main_menu.gd" id="1_ekxnf"]
 [ext_resource type="PackedScene" uid="uid://b84htt7kdl5w6" path="res://scenes/menu_item.tscn" id="1_l6cm7"]
 
 [node name="MainMenu" type="VBoxContainer"]
@@ -17,4 +17,9 @@ script = ExtResource("1_ekxnf")
 layout_mode = 2
 text = "Playlists"
 
+[node name="AboutMenuItem" parent="." instance=ExtResource("1_l6cm7")]
+layout_mode = 2
+text = "About"
+
 [connection signal="pressed" from="PlaylistsMenuItem" to="." method="_on_playlists_menu_item_pressed"]
+[connection signal="pressed" from="AboutMenuItem" to="." method="_on_about_menu_item_pressed"]

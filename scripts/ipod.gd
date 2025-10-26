@@ -1,9 +1,8 @@
 class_name iPod
 extends TextureRect
 
-@export var playlists: Array[Playlist]
-
 var screen_stack: Array[Dictionary] = []
+var playback_position: float
 
 @onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
 @onready var scroll_timer: Timer = %ScrollTimer
@@ -18,49 +17,84 @@ var screen_stack: Array[Dictionary] = []
 
 
 func _ready() -> void:
-	Signals.track_played.connect(_on_track_played)
+	Signals.screen_pushed.connect(_on_screen_pushed)
+	Signals.track_selected.connect(_on_track_selected)
 	grab_focus_child()
 
 
 func _process(_delta: float) -> void:
-	if Input.is_action_just_pressed("menu") and screen_stack.size() > 0:
-		pop_screen()
+	if Input.is_action_just_pressed("menu"):
+		if screen_stack.size() > 0:
+			scroll_container.get_child(0).queue_free()
+			var screen: Dictionary = screen_stack.pop_front()
+			var title: String = screen.title
+			var node: Node = screen.node
+			_update_screen(title, node)
+
+		position.y -= 1
+
+	if Input.is_action_just_released("menu"):
+		position.y += 1
+
+	if Input.is_action_just_pressed("next_fast_forward"):
+		position.x += 1
+
+	if Input.is_action_just_released("next_fast_forward"):
+		position.x -= 1
+
+	if Input.is_action_just_pressed("play_pause"):
+		if audio_stream_player.playing:
+			playback_position = audio_stream_player.get_playback_position()
+			audio_stream_player.stop()
+		else:
+			audio_stream_player.play(playback_position)
+
+		position.y += 1
+
+	if Input.is_action_just_released("play_pause"):
+		position.y -= 1
+
+	if Input.is_action_just_pressed("previous_rewind"):
+		position.x -= 1
+
+	if Input.is_action_just_released("previous_rewind"):
+		position.x += 1
 
 	if Input.is_action_just_pressed("scroll_wheel"):
+		scroll_wheel.press()
 		scroll_timer.start()
 
-	menu_button.toggle = Input.is_action_pressed("menu")
-	next_fast_forward.toggle = Input.is_action_pressed("next_fast_forward")
-	play_pause.toggle = Input.is_action_pressed("play_pause")
-	previous_rewind.toggle = Input.is_action_pressed("previous_rewind")
-	scroll_wheel.toggle = not scroll_timer.is_stopped()
-	select_button.toggle = Input.is_action_pressed("select")
+	if scroll_timer.is_stopped():
+		scroll_wheel.release()
 
 
-func _on_track_played(track: Track) -> void:
-	audio_stream_player.stream = load(track.stream)
-	audio_stream_player.play()
+func _input(event: InputEvent) -> void:
+	if event.is_action("scroll_wheel_clockwise"):
+		var event2 := InputEventKey.new()
+		event2.pressed = event.is_pressed()
+		event2.physical_keycode = KEY_F34
+		Input.parse_input_event(event2)
+
+	if event.is_action("scroll_wheel_counter_clockwise"):
+		var event2 := InputEventKey.new()
+		event2.pressed = event.is_pressed()
+		event2.physical_keycode = KEY_F35
+		Input.parse_input_event(event2)
 
 
-func push_screen(title: String, node: Node) -> void:
+func _on_screen_pushed(title: String, node: Node) -> void:
 	var previous_node := scroll_container.get_child(0)
 	scroll_container.remove_child(previous_node)
 	screen_stack.push_front({ title = label.text, node = previous_node })
 	_update_screen(title, node)
 
 
-func pop_screen() -> void:
-	scroll_container.get_child(0).queue_free()
-	var screen: Dictionary = screen_stack.pop_front()
-	var title: String = screen.title
-	var node: Node = screen.node
-	_update_screen(title, node)
+func _on_track_selected(track: Track) -> void:
+	var stream: AudioStreamMP3 = load(track.stream)
 
-
-func _update_screen(title: String, node: Node) -> void:
-	label.text = title
-	scroll_container.add_child(node)
-	grab_focus_child()
+	if stream != audio_stream_player.stream:
+		audio_stream_player.stream = stream
+		audio_stream_player.play()
 
 
 func grab_focus_child(node: Node = self) -> void:
@@ -73,3 +107,9 @@ func grab_focus_child(node: Node = self) -> void:
 				return
 
 		grab_focus_child(child)
+
+
+func _update_screen(title: String, node: Node) -> void:
+	label.text = title
+	scroll_container.add_child(node)
+	grab_focus_child()

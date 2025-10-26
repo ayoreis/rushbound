@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://pg7ex3gchc4f"
-path="res://.godot/imported/ipod.png-d9a1e6a06596ae93840abee78a4730e0.ctex"
+uid="uid://cho6dibjlp231"
+path="res://.godot/imported/next-fast-forward.png-e819b1170cb459820a09d290e059f62f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://resources/sprites/ipod.png"
-dest_files=["res://.godot/imported/ipod.png-d9a1e6a06596ae93840abee78a4730e0.ctex"]
+source_file="res://assets/sprites/next-fast-forward.png"
+dest_files=["res://.godot/imported/next-fast-forward.png-e819b1170cb459820a09d290e059f62f.ctex"]
 
 [params]
 

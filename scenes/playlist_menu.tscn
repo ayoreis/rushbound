@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://cbnmev71acqwd"]
 
-[ext_resource type="Script" uid="uid://du2jul73thtk8" path="res://scripts/playlist_menu.gd" id="1_ivvkx"]
+[ext_resource type="Script" uid="uid://d1oq8h1gpp4lh" path="res://scripts/playlist_menu.gd" id="1_ivvkx"]
 
 [node name="PlaylistMenu" type="VBoxContainer"]
 anchors_preset = 15

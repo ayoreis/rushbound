@@ -1,6 +1,32 @@
-[gd_scene load_steps=2 format=3 uid="uid://bfnihwin113h0"]
+[gd_scene load_steps=7 format=3 uid="uid://bfnihwin113h0"]
 
-[ext_resource type="Script" uid="uid://btih1njjvvtoy" path="res://scripts/playlists_menu.gd" id="1_rcark"]
+[ext_resource type="Script" uid="uid://bxwqu4pqo3mo1" path="res://scripts/playlists_menu.gd" id="1_rcark"]
+[ext_resource type="Script" uid="uid://c6j3abwnu8qqr" path="res://scripts/resources/playlist.gd" id="2_2gtyr"]
+[ext_resource type="Script" uid="uid://sx037xdr8mv6" path="res://scripts/resources/track.gd" id="3_hkdqf"]
+
+[sub_resource type="Resource" id="Resource_2gtyr"]
+script = ExtResource("3_hkdqf")
+title = "Exit Music (For a Film)"
+artist = "Radiohead"
+album = "OK Computer"
+stream = "uid://c1xxl3c5hefa6"
+scene = "uid://clbvcccfwyu3c"
+metadata/_custom_type_script = "uid://sx037xdr8mv6"
+
+[sub_resource type="Resource" id="Resource_hkdqf"]
+script = ExtResource("3_hkdqf")
+title = "Wires"
+artist = "The Neighbourhood"
+album = "I'm Sorry..."
+stream = "uid://cgxmij5172com"
+scene = "uid://dwtaihr38p4os"
+metadata/_custom_type_script = "uid://sx037xdr8mv6"
+
+[sub_resource type="Resource" id="Resource_m5lok"]
+script = ExtResource("2_2gtyr")
+title = "The Runaway"
+tracks = Array[ExtResource("3_hkdqf")]([SubResource("Resource_2gtyr"), SubResource("Resource_hkdqf")])
+metadata/_custom_type_script = "uid://c6j3abwnu8qqr"
 
 [node name="PlaylistsMenu" type="VBoxContainer"]
 anchors_preset = 15
@@ -11,3 +37,4 @@ grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("1_rcark")
+playlists = Array[ExtResource("2_2gtyr")]([SubResource("Resource_m5lok")])
