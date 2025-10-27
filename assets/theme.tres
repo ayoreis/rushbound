@@ -1,7 +1,7 @@
 [gd_resource type="Theme" load_steps=6 format=3 uid="uid://cr5eb43c1rn0t"]
 
-[ext_resource type="Texture2D" uid="uid://gs5qpm1amge3" path="res://resources/sprites/arrow-right.png" id="1_7ct1h"]
-[ext_resource type="FontFile" uid="uid://cvh0krg1x26b5" path="res://resources/fonts/chicago.png" id="1_e1x85"]
+[ext_resource type="Texture2D" uid="uid://gs5qpm1amge3" path="res://assets/sprites/arrow-right.png" id="1_7ct1h"]
+[ext_resource type="FontFile" uid="uid://cvh0krg1x26b5" path="res://assets/fonts/chicago.png" id="1_e1x85"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e1x85"]
 bg_color = Color(0.13333334, 0.13725491, 0.13725491, 1)

@@ -42,9 +42,10 @@ func _process(_delta: float) -> void:
 	if Input.is_action_just_released("next_fast_forward"):
 		position.x -= 1
 
+	playback_position = audio_stream_player.get_playback_position()
+
 	if Input.is_action_just_pressed("play_pause"):
 		if audio_stream_player.playing:
-			playback_position = audio_stream_player.get_playback_position()
 			audio_stream_player.stop()
 		else:
 			audio_stream_player.play(playback_position)
@@ -66,6 +67,9 @@ func _process(_delta: float) -> void:
 
 	if scroll_timer.is_stopped():
 		scroll_wheel.release()
+
+	if audio_stream_player.playing:
+		Signals.playback_position_changed.emit(playback_position)
 
 
 func _input(event: InputEvent) -> void:
