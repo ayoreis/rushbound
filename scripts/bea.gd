@@ -1,25 +1,69 @@
+class_name Bea
 extends CharacterBody2D
 
+@onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 
-const SPEED = 300.0
-const JUMP_VELOCITY = -400.0
+var state: State = Idle.new()
+
+
+func _ready() -> void:
+	state.bea = self
 
 
 func _physics_process(delta: float) -> void:
-	# Add the gravity.
-	if not is_on_floor():
-		velocity += get_gravity() * delta
+	var new_state := state.handle_input()
 
-	# Handle jump.
-	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
-		velocity.y = JUMP_VELOCITY
+	if new_state != null:
+		var old_state := state
+		old_state.exit()
+		new_state.bea = self
+		new_state.enter()
+		state = new_state
 
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
-	var direction := Input.get_axis("ui_left", "ui_right")
-	if direction:
-		velocity.x = direction * SPEED
-	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
-
+	state.update(delta)
 	move_and_slide()
+
+
+@abstract class State:
+	var bea: Bea
+
+	var direction: Vector2:
+		get():
+			return Input.get_vector("move_left", "move_right", "move_up", "move_down").normalized()
+
+	func enter() -> void:
+		pass
+
+	func exit() -> void:
+		pass
+
+	func handle_input() -> State:
+		return null
+
+	func update(_delta: float) -> void:
+		pass
+
+
+class Idle extends State:
+	func enter() -> void:
+		bea.animated_sprite_2d.animation = &"idle"
+
+	func handle_input() -> State:
+		if direction.x != 0:
+			return Running.new()
+
+		return null
+
+
+class Running extends State:
+	func enter() -> void:
+		bea.animated_sprite_2d.animation = &"running"
+
+	func handle_input() -> State:
+		if direction.x == 0:
+			return Idle.new()
+
+		return null
+
+	func update(_delta: float) -> void:
+		bea.animated_sprite_2d.flip_h = direction.x < 0
