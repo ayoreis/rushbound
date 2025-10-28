@@ -32,6 +32,7 @@ text_overrun_behavior = 3
 [node name="TextureProgressBar" type="TextureProgressBar" parent="."]
 custom_minimum_size = Vector2(0, 4)
 layout_mode = 2
+max_value = 62.0
 nine_patch_stretch = true
 stretch_margin_left = 1
 stretch_margin_top = 1

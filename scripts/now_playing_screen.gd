@@ -16,12 +16,6 @@ func _ready() -> void:
 	title_label.text = track.title 
 	artist_label.text = track.artist
 	album_label.text = track.album
-
-	var _on_process_frame := func () -> void:
-		texture_progress_bar.max_value = texture_progress_bar.size.x
-
-	get_tree().process_frame.connect(_on_process_frame, CONNECT_ONE_SHOT)
-
 	Signals.playback_position_changed.connect(_on_playback_position_changed)
 	Signals.track_selected.emit(track)
 
