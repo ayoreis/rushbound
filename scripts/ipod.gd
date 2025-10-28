@@ -42,7 +42,8 @@ func _process(_delta: float) -> void:
 	if Input.is_action_just_released("next_fast_forward"):
 		position.x -= 1
 
-	playback_position = audio_stream_player.get_playback_position()
+	if audio_stream_player.playing:
+		playback_position = audio_stream_player.get_playback_position()
 
 	if Input.is_action_just_pressed("play_pause"):
 		if audio_stream_player.playing:
