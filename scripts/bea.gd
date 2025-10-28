@@ -1,9 +1,9 @@
 class_name Bea
 extends CharacterBody2D
 
-@onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
-
 var state: State = Idle.new()
+
+@onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 
 
 func _ready() -> void:
@@ -49,8 +49,10 @@ class Idle extends State:
 		bea.animated_sprite_2d.animation = &"idle"
 
 	func handle_input() -> State:
+		bea.velocity.x = move_toward(bea.velocity.x, 0, 10)
+
 		if direction.x != 0:
-			return Running.new()
+			return Running.new() 
 
 		return null
 
@@ -66,4 +68,5 @@ class Running extends State:
 		return null
 
 	func update(_delta: float) -> void:
+		bea.velocity.x = move_toward(bea.velocity.x, 100 * direction.x, 10)
 		bea.animated_sprite_2d.flip_h = direction.x < 0
