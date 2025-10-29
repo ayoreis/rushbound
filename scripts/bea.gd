@@ -45,19 +45,25 @@ func _physics_process(delta: float) -> void:
 
 
 class Idle extends State:
+	const DECELERATION = 50
+
 	func enter() -> void:
 		bea.animated_sprite_2d.animation = &"idle"
 
 	func handle_input() -> State:
-		bea.velocity.x = move_toward(bea.velocity.x, 0, 10)
-
 		if direction.x != 0:
-			return Running.new() 
+			return Running.new()    
 
 		return null
 
+	func update(_delta: float) -> void:
+		bea.velocity.x = move_toward(bea.velocity.x, 0, DECELERATION)
+
 
 class Running extends State:
+	const SPEED = 100
+	const ACCELERATION = 20
+
 	func enter() -> void:
 		bea.animated_sprite_2d.animation = &"running"
 
@@ -68,5 +74,5 @@ class Running extends State:
 		return null
 
 	func update(_delta: float) -> void:
-		bea.velocity.x = move_toward(bea.velocity.x, 100 * direction.x, 10)
+		bea.velocity.x = move_toward(bea.velocity.x, SPEED * direction.x, ACCELERATION)
 		bea.animated_sprite_2d.flip_h = direction.x < 0
