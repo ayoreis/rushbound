@@ -14,6 +14,7 @@
 [ext_resource type="AudioStream" uid="uid://dgq6nc0jrt8g" path="res://assets/sounds/select-button-press.wav" id="12_l5cgh"]
 [ext_resource type="PackedScene" uid="uid://bjht3natywdf6" path="res://scenes/main_menu.tscn" id="13_l5cgh"]
 [ext_resource type="AudioStream" uid="uid://dq6pe8irvv3u8" path="res://assets/sounds/select-button-release.wav" id="13_vgks2"]
+[ext_resource type="Script" uid="uid://b8nc2kaov58kx" path="res://scripts/sub_viewport_container.gd" id="15_dylgi"]
 
 [sub_resource type="Animation" id="Animation_jrhyn"]
 length = 0.001
@@ -197,23 +198,6 @@ stream_0/volume = 0.0
 stream_1/stream = ExtResource("4_jrhyn")
 stream_1/volume = 0.0
 
-[sub_resource type="GDScript" id="GDScript_log26"]
-resource_name = "sub_viewport_container"
-script/source = "extends SubViewportContainer
-
-@onready var sub_viewport: SubViewport = $SubViewport
-
-
-func _ready() -> void:
-	Signals.track_selected.connect(_on_track_played)
-
-
-func _on_track_played(track: Track) -> void:
-	sub_viewport.get_child(0).queue_free()
-	var scene: PackedScene = load(track.scene)
-	sub_viewport.add_child(scene.instantiate())
-"
-
 [node name="Root" type="Node"]
 
 [node name="Pocket" type="CanvasLayer" parent="."]
@@ -372,7 +356,7 @@ offset_right = 1.0
 offset_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = SubResource("GDScript_log26")
+script = ExtResource("15_dylgi")
 metadata/_edit_lock_ = true
 
 [node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
