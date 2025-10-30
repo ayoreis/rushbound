@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://jhlb0aibbmc7" path="res://assets/sprites/bea.png" id="2_vkltt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vkltt"]
-size = Vector2(6, 16)
+size = Vector2(6, 15.8)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bgmse"]
 atlas = ExtResource("2_vkltt")
@@ -93,6 +93,7 @@ animations = [{
 script = ExtResource("1_nqx4l")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 0.1)
 shape = SubResource("RectangleShape2D_vkltt")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
