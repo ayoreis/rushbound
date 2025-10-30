@@ -43,7 +43,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.3),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(0, 0), Vector2(0, 169)]
+"values": [Vector2(0, 0), Vector2(0, 178)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_jrhyn"]
@@ -54,11 +54,11 @@ _data = {
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_log26"]
 atlas = ExtResource("4_y3xxt")
-region = Rect2(0, 0, 58, 20)
+region = Rect2(0, 0, 62, 21)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gt4lb"]
 atlas = ExtResource("4_y3xxt")
-region = Rect2(0, 20, 58, 20)
+region = Rect2(0, 21, 62, 21)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_vgks2"]
 resource_local_to_scene = true
@@ -77,11 +77,11 @@ animations = [{
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ya6yc"]
 atlas = ExtResource("5_y3xxt")
-region = Rect2(0, 0, 20, 58)
+region = Rect2(0, 0, 21, 62)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mflgo"]
 atlas = ExtResource("5_y3xxt")
-region = Rect2(20, 0, 20, 58)
+region = Rect2(21, 0, 21, 62)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_dylgi"]
 resource_local_to_scene = true
@@ -98,38 +98,15 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_y3xxt"]
-atlas = ExtResource("6_3hfy5")
-region = Rect2(0, 0, 58, 20)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_xsp7o"]
-atlas = ExtResource("6_3hfy5")
-region = Rect2(0, 20, 58, 20)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_jrhyn"]
-resource_local_to_scene = true
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_y3xxt")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_xsp7o")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_34frw"]
-atlas = ExtResource("7_7pvxh")
-region = Rect2(0, 0, 20, 58)
+atlas = ExtResource("6_3hfy5")
+region = Rect2(0, 0, 62, 21)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8ui5n"]
-atlas = ExtResource("7_7pvxh")
-region = Rect2(20, 0, 20, 58)
+atlas = ExtResource("6_3hfy5")
+region = Rect2(0, 21, 62, 21)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_log26"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_jrhyn"]
 resource_local_to_scene = true
 animations = [{
 "frames": [{
@@ -144,46 +121,69 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_l5cgh"]
-atlas = ExtResource("8_7pvxh")
-region = Rect2(0, 0, 62, 62)
+[sub_resource type="AtlasTexture" id="AtlasTexture_ccljq"]
+atlas = ExtResource("7_7pvxh")
+region = Rect2(0, 0, 21, 62)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_vgks2"]
-atlas = ExtResource("8_7pvxh")
-region = Rect2(62, 0, 62, 62)
+[sub_resource type="AtlasTexture" id="AtlasTexture_jehah"]
+atlas = ExtResource("7_7pvxh")
+region = Rect2(21, 0, 21, 62)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_gt4lb"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_log26"]
 resource_local_to_scene = true
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_l5cgh")
+"texture": SubResource("AtlasTexture_ccljq")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_vgks2")
+"texture": SubResource("AtlasTexture_jehah")
 }],
 "loop": true,
 "name": &"default",
 "speed": 5.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_vgks2"]
+atlas = ExtResource("8_7pvxh")
+region = Rect2(0, 0, 68, 68)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_dylgi"]
-atlas = ExtResource("9_y3xxt")
-region = Rect2(0, 0, 22, 22)
+atlas = ExtResource("8_7pvxh")
+region = Rect2(68, 0, 68, 68)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gt4lb"]
+resource_local_to_scene = true
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vgks2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dylgi")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jrhyn"]
 atlas = ExtResource("9_y3xxt")
-region = Rect2(22, 0, 22, 22)
+region = Rect2(0, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f3p2p"]
+atlas = ExtResource("9_y3xxt")
+region = Rect2(24, 0, 24, 24)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ya6yc"]
 resource_local_to_scene = true
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_dylgi")
+"texture": SubResource("AtlasTexture_jrhyn")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_jrhyn")
+"texture": SubResource("AtlasTexture_f3p2p")
 }],
 "loop": true,
 "name": &"default",
@@ -269,10 +269,10 @@ one_shot = true
 [node name="MenuButton" parent="Pocket/iPod/Controls" instance=ExtResource("2_twpsu")]
 unique_name_in_owner = true
 layout_mode = 0
-offset_left = 19.0
-offset_top = 67.0
-offset_right = 77.0
-offset_bottom = 87.0
+offset_left = 22.0
+offset_top = 76.0
+offset_right = 88.0
+offset_bottom = 98.0
 texture = SubResource("AtlasTexture_log26")
 action = &"menu"
 sprite_frames = SubResource("SpriteFrames_vgks2")
@@ -280,10 +280,10 @@ sprite_frames = SubResource("SpriteFrames_vgks2")
 [node name="NextFastForward" parent="Pocket/iPod/Controls" instance=ExtResource("2_twpsu")]
 unique_name_in_owner = true
 layout_mode = 0
-offset_left = 69.0
-offset_top = 79.0
-offset_right = 89.0
-offset_bottom = 137.0
+offset_left = 76.0
+offset_top = 89.0
+offset_right = 98.0
+offset_bottom = 155.0
 texture = SubResource("AtlasTexture_ya6yc")
 action = &"next_fast_forward"
 sprite_frames = SubResource("SpriteFrames_dylgi")
@@ -291,33 +291,33 @@ sprite_frames = SubResource("SpriteFrames_dylgi")
 [node name="PlayPause" parent="Pocket/iPod/Controls" instance=ExtResource("2_twpsu")]
 unique_name_in_owner = true
 layout_mode = 0
-offset_left = 19.0
-offset_top = 129.0
-offset_right = 77.0
-offset_bottom = 149.0
-texture = SubResource("AtlasTexture_y3xxt")
+offset_left = 22.0
+offset_top = 143.0
+offset_right = 88.0
+offset_bottom = 165.0
+texture = SubResource("AtlasTexture_34frw")
 action = &"play_pause"
 sprite_frames = SubResource("SpriteFrames_jrhyn")
 
 [node name="PreviousRewind" parent="Pocket/iPod/Controls" instance=ExtResource("2_twpsu")]
 unique_name_in_owner = true
 layout_mode = 0
-offset_left = 7.0
-offset_top = 79.0
-offset_right = 27.0
-offset_bottom = 137.0
-texture = SubResource("AtlasTexture_34frw")
+offset_left = 9.0
+offset_top = 89.0
+offset_right = 31.0
+offset_bottom = 155.0
+texture = SubResource("AtlasTexture_ccljq")
 action = &"previous_rewind"
 sprite_frames = SubResource("SpriteFrames_log26")
 
 [node name="ScrollWheel" parent="Pocket/iPod/Controls" instance=ExtResource("2_twpsu")]
 unique_name_in_owner = true
 layout_mode = 0
-offset_left = 17.0
-offset_top = 77.0
-offset_right = 79.0
-offset_bottom = 139.0
-texture = SubResource("AtlasTexture_l5cgh")
+offset_left = 19.0
+offset_top = 86.0
+offset_right = 93.0
+offset_bottom = 160.0
+texture = SubResource("AtlasTexture_vgks2")
 action = &""
 sprite_frames = SubResource("SpriteFrames_gt4lb")
 press_stream = null
@@ -326,11 +326,11 @@ release_stream = null
 [node name="SelectButton" parent="Pocket/iPod/Controls" instance=ExtResource("2_twpsu")]
 unique_name_in_owner = true
 layout_mode = 0
-offset_left = 37.0
-offset_top = 97.0
-offset_right = 59.0
-offset_bottom = 119.0
-texture = SubResource("AtlasTexture_dylgi")
+offset_left = 41.0
+offset_top = 108.0
+offset_right = 65.0
+offset_bottom = 132.0
+texture = SubResource("AtlasTexture_jrhyn")
 action = &"select"
 sprite_frames = SubResource("SpriteFrames_ya6yc")
 press_stream = SubResource("AudioStreamSynchronized_vgks2")
@@ -338,10 +338,10 @@ release_stream = ExtResource("13_vgks2")
 
 [node name="GUI" type="VBoxContainer" parent="Pocket/iPod"]
 layout_mode = 0
-offset_left = 17.0
+offset_left = 18.0
 offset_top = 8.0
-offset_right = 79.0
-offset_bottom = 59.0
+offset_right = 88.0
+offset_bottom = 67.0
 metadata/_edit_group_ = true
 
 [node name="Label" type="Label" parent="Pocket/iPod/GUI"]
