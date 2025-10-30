@@ -1,6 +1,8 @@
 class_name iPod
 extends TextureRect
 
+const TUTORIAL_SCREEN = preload("res://scenes/tutorial_screen.tscn")
+
 var screen_stack: Array[Dictionary] = []
 var playback_position: float
 
@@ -19,7 +21,7 @@ var playback_position: float
 func _ready() -> void:
 	Signals.screen_pushed.connect(_on_screen_pushed)
 	Signals.track_selected.connect(_on_track_selected)
-	grab_focus_child()
+	Signals.screen_pushed.emit("Tutorial", TUTORIAL_SCREEN.instantiate())
 
 
 func _process(_delta: float) -> void:

@@ -209,17 +209,6 @@ libraries = {
 &"": SubResource("AnimationLibrary_jrhyn")
 }
 
-[node name="Label" type="Label" parent="Pocket"]
-offset_left = 32.0
-offset_top = 32.0
-offset_right = 78.0
-offset_bottom = 67.0
-text = "Try using:
-- Space
-- Scroll wheel
-- WASD
-- Escape"
-
 [node name="iPod" type="TextureRect" parent="Pocket"]
 unique_name_in_owner = true
 process_mode = 2

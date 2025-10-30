@@ -17,9 +17,14 @@ script = ExtResource("1_ekxnf")
 layout_mode = 2
 text = "Playlists"
 
+[node name="TutorialMenuItem" parent="." instance=ExtResource("1_l6cm7")]
+layout_mode = 2
+text = "Tutorial"
+
 [node name="AboutMenuItem" parent="." instance=ExtResource("1_l6cm7")]
 layout_mode = 2
 text = "About"
 
 [connection signal="pressed" from="PlaylistsMenuItem" to="." method="_on_playlists_menu_item_pressed"]
+[connection signal="pressed" from="TutorialMenuItem" to="." method="_on_tutorial_menu_item_pressed"]
 [connection signal="pressed" from="AboutMenuItem" to="." method="_on_about_menu_item_pressed"]

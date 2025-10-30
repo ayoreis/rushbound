@@ -35,6 +35,5 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
-size_flags_vertical = 3
 script = ExtResource("1_rcark")
 playlists = Array[ExtResource("2_2gtyr")]([SubResource("Resource_m5lok")])
