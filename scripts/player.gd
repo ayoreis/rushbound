@@ -1,4 +1,4 @@
-class_name Bea
+class_name Player
 extends CharacterBody2D
 
 @export var current_room: Room
@@ -9,7 +9,7 @@ var state: State = Idle.new()
 
 
 func _ready() -> void:
-	state.bea = self
+	state.player = self
 
 
 func _physics_process(delta: float) -> void:
@@ -18,7 +18,7 @@ func _physics_process(delta: float) -> void:
 	if new_state != null:
 		var old_state := state
 		old_state.exit()
-		new_state.bea = self
+		new_state.player = self
 		new_state.enter()
 		state = new_state
 
@@ -26,7 +26,8 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 
-func _on_room_body_entered(body: Node2D, source: Area2D) -> void:
+func _on_room_body_entered(body: Node2D, source: Room) -> void:
+	print(body, source)
 	if body != self:
 		return
 
@@ -34,7 +35,7 @@ func _on_room_body_entered(body: Node2D, source: Area2D) -> void:
 
 
 @abstract class State:
-	var bea: Bea
+	var player: Player
 
 	var direction: Vector2:
 		get():
@@ -42,7 +43,7 @@ func _on_room_body_entered(body: Node2D, source: Area2D) -> void:
 
 	var jumping: bool:
 		get():
-			return Input.is_action_just_pressed("jump") and bea.is_on_floor()
+			return Input.is_action_just_pressed("jump") and player.is_on_floor()
 
 	func enter() -> void:
 		pass
@@ -61,10 +62,10 @@ class Idle extends State:
 	const DECELERATION = 50
 
 	func enter() -> void:
-		bea.animated_sprite_2d.animation = &"idle"
+		player.animated_sprite_2d.animation = &"idle"
 
 	func handle_input() -> State:
-		if not bea.is_on_floor():
+		if not player.is_on_floor():
 			return Falling.new()
 		
 		if jumping:
@@ -76,7 +77,7 @@ class Idle extends State:
 		return null
 
 	func update(_delta: float) -> void:
-		bea.velocity.x = move_toward(bea.velocity.x, 0, DECELERATION)
+		player.velocity.x = move_toward(player.velocity.x, 0, DECELERATION)
 
 
 class Running extends State:
@@ -84,10 +85,10 @@ class Running extends State:
 	const ACCELERATION = 20
 
 	func enter() -> void:
-		bea.animated_sprite_2d.animation = &"running"
+		player.animated_sprite_2d.animation = &"running"
 
 	func handle_input() -> State:
-		if not bea.is_on_floor():
+		if not player.is_on_floor():
 			return Falling.new()
 		
 		if jumping:
@@ -99,8 +100,8 @@ class Running extends State:
 		return null
 
 	func update(_delta: float) -> void:
-		bea.velocity.x = move_toward(bea.velocity.x, SPEED * direction.x, ACCELERATION)
-		bea.animated_sprite_2d.flip_h = direction.x < 0
+		player.velocity.x = move_toward(player.velocity.x, SPEED * direction.x, ACCELERATION)
+		player.animated_sprite_2d.flip_h = direction.x < 0
 
 
 class Jumping extends State:
@@ -111,20 +112,20 @@ class Jumping extends State:
 	const GRAVITY = (2 * HEIGHT * (FOOT_SPEED ** 2)) / (DISTANCE_TO_PEAK ** 2)
 
 	func enter() -> void:
-		bea.velocity.y = VELOCITY
+		player.velocity.y = VELOCITY
 
 	func handle_input() -> State:
-		if bea.is_on_floor():
+		if player.is_on_floor():
 			return Idle.new()
 
-		if bea.velocity.y > 0:
+		if player.velocity.y > 0:
 			return Falling.new()
 
 		return null
 
 	func update(delta: float) -> void:
-		bea.velocity.x = move_toward(bea.velocity.x, direction.x * Running.SPEED, Running.ACCELERATION)
-		bea.velocity.y += GRAVITY * delta
+		player.velocity.x = move_toward(player.velocity.x, direction.x * Running.SPEED, Running.ACCELERATION)
+		player.velocity.y += GRAVITY * delta
 
 
 class Falling extends State:
@@ -135,7 +136,7 @@ class Falling extends State:
 	const GRAVITY = (2 * HEIGHT * (FOOT_SPEED ** 2)) / (DISTANCE_TO_PEAK ** 2)
 
 	func handle_input() -> State:
-		if not bea.is_on_floor():
+		if not player.is_on_floor():
 			return null
 
 		if jumping:
@@ -147,5 +148,5 @@ class Falling extends State:
 		return Idle.new()
 
 	func update(delta: float) -> void:
-		bea.velocity.x = move_toward(bea.velocity.x, direction.x * Running.SPEED, Running.ACCELERATION)
-		bea.velocity.y += GRAVITY * delta
+		player.velocity.x = move_toward(player.velocity.x, direction.x * Running.SPEED, Running.ACCELERATION)
+		player.velocity.y += GRAVITY * delta
