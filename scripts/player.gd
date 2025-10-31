@@ -25,10 +25,7 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 
-func _on_room_body_entered(body: Node2D, source: Room) -> void:
-	if body != self:
-		return
-
+func _on_room_body_entered(_body: Player, source: Room) -> void:
 	current_room = source
 
 
