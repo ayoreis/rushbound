@@ -1,9 +1,8 @@
 class_name Player
 extends CharacterBody2D
 
-@export var current_room: Room
-
 var state: State = Idle.new()
+var current_room: Room
 
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 
@@ -27,7 +26,6 @@ func _physics_process(delta: float) -> void:
 
 
 func _on_room_body_entered(body: Node2D, source: Room) -> void:
-	print(body, source)
 	if body != self:
 		return
 
