@@ -1,7 +1,16 @@
 extends Camera2D
 
-@onready var player: Player = %Player
+var camera: Camera2D
 
 
 func _process(_delta: float) -> void:
-	global_position = player.current_room.get_closest_point_on_path(player.global_position)
+	if camera == null:
+		return
+
+	var camera_position := camera.get_screen_center_position()
+	offset = camera_position - camera_position.round()
+
+
+func _on_sub_viewport_child_entered_tree(node: Node2D) -> void:
+	await node.ready
+	camera = node.get_node_or_null("Camera2D")

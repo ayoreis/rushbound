@@ -18,6 +18,7 @@ func _ready() -> void:
 
 	add_child(player)
 	
+	camera.name = "Camera2D"
 	camera.position_smoothing_enabled = true
 	_position_camera()
 	add_child(camera)
