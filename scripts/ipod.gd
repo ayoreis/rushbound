@@ -1,9 +1,11 @@
 class_name iPod
 extends TextureRect
 
+const MAIN_MENU = preload("res://scenes/main_menu.tscn")
 const TUTORIAL_SCREEN = preload("res://scenes/tutorial_screen.tscn")
 
-var screen_stack: Array[Dictionary] = []
+var _main_menu: VBoxContainer = MAIN_MENU.instantiate()
+var screen_stack: Array[Dictionary] = [{ title = "Rushbound", node = _main_menu }]
 var playback_position: float
 
 @onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
@@ -14,26 +16,57 @@ var playback_position: float
 @onready var previous_rewind: iPodControl = %PreviousRewind
 @onready var scroll_wheel: iPodControl = %ScrollWheel
 @onready var select_button: iPodControl = %SelectButton
-@onready var label: Label = $GUI/Label
-@onready var scroll_container: ScrollContainer = $GUI/ScrollContainer
+@onready var label: Label = $GUI/VBoxContainer/Label
+@onready var scroll_container: ScrollContainer = $GUI/VBoxContainer/ScrollContainer
+@onready var animation_player: AnimationPlayer = $GUI/VBoxContainer/ScrollContainer/AnimationPlayer
+@onready var h_box_container: HBoxContainer = $GUI/VBoxContainer/ScrollContainer/HBoxContainer
 
 
 func _ready() -> void:
 	Signals.screen_pushed.connect(_on_screen_pushed)
 	Signals.track_selected.connect(_on_track_selected)
-	Signals.screen_pushed.emit("Tutorial", TUTORIAL_SCREEN.instantiate())
 
+	var screen: Control = h_box_container.get_child(0)
+	var valid_focus_child := find_valid_focus_child(screen)
+
+	if valid_focus_child != null:
+		valid_focus_child.grab_focus()
 
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("menu"):
+		position.y -= 1
+
 		if screen_stack.size() > 0:
-			scroll_container.get_child(0).queue_free()
+			var focus_owner := get_viewport().gui_get_focus_owner()
+
+			if focus_owner != null:
+				release_focus()
+				focus_owner.theme_type_variation = &"ButtonFocused"
+
 			var screen: Dictionary = screen_stack.pop_front()
 			var title: String = screen.title
-			var node: Node = screen.node
-			_update_screen(title, node)
+			var node: Control = screen.node
 
-		position.y -= 1
+			label.text = title
+			h_box_container.custom_minimum_size.x = h_box_container.size.x * 2
+			h_box_container.add_child(node)
+			h_box_container.move_child(node, 0)
+
+			var focus_child := find_valid_focus_child(node)
+
+			if focus_child != null:
+				focus_child.theme_type_variation = &"ButtonFocused"
+
+			var _on_animation_finished := func (_animation_name: StringName) -> void:
+				h_box_container.get_child(1).queue_free()
+				h_box_container.custom_minimum_size.x = 0
+
+				if focus_child != null:
+					focus_child.theme_type_variation = &""
+					focus_child.call_deferred("grab_focus")
+
+			animation_player.animation_finished.connect(_on_animation_finished, CONNECT_ONE_SHOT)
+			animation_player.play_backwards("push")
 
 	if Input.is_action_just_released("menu"):
 		position.y += 1
@@ -89,11 +122,36 @@ func _input(event: InputEvent) -> void:
 		Input.parse_input_event(event2)
 
 
-func _on_screen_pushed(title: String, node: Node) -> void:
-	var previous_node := scroll_container.get_child(0)
-	scroll_container.remove_child(previous_node)
-	screen_stack.push_front({ title = label.text, node = previous_node })
-	_update_screen(title, node)
+func _on_screen_pushed(title: String, node: Control) -> void:
+	var focus_owner := get_viewport().gui_get_focus_owner()
+
+	if focus_owner != null:
+		release_focus()
+		focus_owner.theme_type_variation = &"ButtonFocused"
+
+	label.text = title
+	h_box_container.custom_minimum_size.x = h_box_container.size.x * 2
+	h_box_container.add_child(node)
+
+	var focus_child := find_valid_focus_child(node)
+
+	if focus_child != null:
+		focus_child.theme_type_variation = &"ButtonFocused"
+
+	animation_player.play("push")
+	await animation_player.animation_finished
+	
+	if focus_owner != null:
+		focus_owner.theme_type_variation = &""
+
+	if focus_child != null:
+		focus_child.theme_type_variation = &""
+		focus_child.grab_focus()
+
+	var previous_screen := h_box_container.get_child(0)
+	screen_stack.push_front({ title = label.text, node = previous_screen })
+	h_box_container.remove_child(previous_screen)
+	h_box_container.custom_minimum_size.x = 0
 
 
 func _on_track_selected(track: Track) -> void:
@@ -104,19 +162,19 @@ func _on_track_selected(track: Track) -> void:
 		audio_stream_player.play()
 
 
-func grab_focus_child(node: Node = self) -> void:
-	for child in node.get_children():
-		if child is Control:
-			var control: Control = child
+func find_valid_focus_child(control: Control) -> Control:
+	for child in control.get_children():
+		if child is not Control:
+			continue
 
-			if control.focus_mode != FOCUS_NONE:
-				control.grab_focus()
-				return
+		var focus_child: Control = child
 
-		grab_focus_child(child)
+		if focus_child.focus_mode != FOCUS_NONE:
+			return focus_child
+			
+		var valid_focus_child := find_valid_focus_child(focus_child)
 
+		if valid_focus_child != null:
+			return valid_focus_child
 
-func _update_screen(title: String, node: Node) -> void:
-	label.text = title
-	scroll_container.add_child(node)
-	grab_focus_child()
+	return null
