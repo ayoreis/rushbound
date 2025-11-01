@@ -4,11 +4,15 @@
 [ext_resource type="FontFile" uid="uid://cvh0krg1x26b5" path="res://assets/fonts/chicago.png" id="1_e1x85"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e1x85"]
+content_margin_top = 1.0
+content_margin_bottom = 1.0
 bg_color = Color(0.13333334, 0.13725491, 0.13725491, 1)
 expand_margin_left = 1.0
 expand_margin_right = 1.0
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7ct1h"]
+content_margin_top = 1.0
+content_margin_bottom = 1.0
 
 [sub_resource type="StyleBoxLine" id="StyleBoxLine_e1x85"]
 color = Color(0.13333334, 0.13725491, 0.13725491, 1)
@@ -26,8 +30,12 @@ Button/icons/icon = ExtResource("1_7ct1h")
 Button/styles/focus = SubResource("StyleBoxFlat_e1x85")
 Button/styles/normal = SubResource("StyleBoxEmpty_7ct1h")
 Button/styles/pressed = SubResource("StyleBoxEmpty_7ct1h")
+ButtonFocused/base_type = &"Button"
+ButtonFocused/colors/font_color = Color(0.9411765, 0.9647059, 0.9411765, 1)
+ButtonFocused/colors/icon_normal_color = Color(0.9411765, 0.9647059, 0.9411765, 1)
+ButtonFocused/styles/normal = SubResource("StyleBoxFlat_e1x85")
 HBoxContainer/constants/separation = 0
-HSeparator/constants/separation = 2
+HSeparator/constants/separation = 3
 HSeparator/styles/separator = SubResource("StyleBoxLine_e1x85")
 Label/colors/font_color = Color(0.13333334, 0.13725491, 0.13725491, 1)
 Label/constants/line_spacing = 0
