@@ -46,6 +46,7 @@ func _process(_delta: float) -> void:
 			var screen: Dictionary = screen_stack.pop_front()
 			var title: String = screen.title
 			var node: Control = screen.node
+			print(screen)
 
 			label.text = title
 			h_box_container.custom_minimum_size.x = h_box_container.size.x * 2
@@ -129,6 +130,8 @@ func _on_screen_pushed(title: String, node: Control) -> void:
 		release_focus()
 		focus_owner.theme_type_variation = &"ButtonFocused"
 
+	var previous_title := label.text
+
 	label.text = title
 	h_box_container.custom_minimum_size.x = h_box_container.size.x * 2
 	h_box_container.add_child(node)
@@ -149,7 +152,7 @@ func _on_screen_pushed(title: String, node: Control) -> void:
 		focus_child.grab_focus()
 
 	var previous_screen := h_box_container.get_child(0)
-	screen_stack.push_front({ title = label.text, node = previous_screen })
+	screen_stack.push_front({ title = previous_title, node = previous_screen })
 	h_box_container.remove_child(previous_screen)
 	h_box_container.custom_minimum_size.x = 0
 

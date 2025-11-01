@@ -364,7 +364,7 @@ metadata/_edit_group_ = true
 [node name="Label" type="Label" parent="Pocket/iPod/GUI/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
-text = "Rushbound"
+text = "Tutorial"
 
 [node name="HSeparator" type="HSeparator" parent="Pocket/iPod/GUI/VBoxContainer"]
 layout_mode = 2
