@@ -1,7 +1,7 @@
 [gd_scene load_steps=42 format=3 uid="uid://ptrhcnpxicmj"]
 
 [ext_resource type="Texture2D" uid="uid://pg7ex3gchc4f" path="res://assets/sprites/ipod.png" id="1_twpsu"]
-[ext_resource type="Script" uid="uid://dlqf36hbs4kcg" path="res://scripts/pocket.gd" id="2_l5cgh"]
+[ext_resource type="Script" uid="uid://dlqf36hbs4kcg" path="res://scripts/drawer.gd" id="2_l5cgh"]
 [ext_resource type="PackedScene" uid="uid://c5vjmaxosdxge" path="res://scenes/ipod_control.tscn" id="2_twpsu"]
 [ext_resource type="AudioStream" uid="uid://cbbamxicsvmc1" path="res://assets/sounds/ui.wav" id="4_jrhyn"]
 [ext_resource type="Script" uid="uid://dmcwpyjuqh6o" path="res://scripts/ipod.gd" id="4_vgks2"]
@@ -33,8 +33,8 @@ tracks/0/keys = {
 }
 
 [sub_resource type="Animation" id="Animation_dylgi"]
-resource_name = "toggle"
-length = 0.3
+resource_name = "draw"
+length = 0.4
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -42,16 +42,16 @@ tracks/0/path = NodePath(".:offset")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.3),
+"times": PackedFloat32Array(0, 0.4),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(0, 0), Vector2(0, 178)]
+"values": [Vector2(0, 178), Vector2(0, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_jrhyn"]
 _data = {
 &"RESET": SubResource("Animation_jrhyn"),
-&"toggle": SubResource("Animation_dylgi")
+&"draw": SubResource("Animation_dylgi")
 }
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_log26"]
@@ -199,6 +199,21 @@ stream_0/volume = 0.0
 stream_1/stream = ExtResource("4_jrhyn")
 stream_1/volume = 0.0
 
+[sub_resource type="Animation" id="Animation_gt4lb"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scroll_horizontal")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
 [sub_resource type="Animation" id="Animation_log26"]
 resource_name = "push"
 length = 0.4
@@ -215,21 +230,6 @@ tracks/0/keys = {
 "values": [0, 72]
 }
 
-[sub_resource type="Animation" id="Animation_gt4lb"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:scroll_horizontal")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ya6yc"]
 _data = {
 &"RESET": SubResource("Animation_gt4lb"),
@@ -238,16 +238,16 @@ _data = {
 
 [node name="Root" type="Node"]
 
-[node name="Pocket" type="CanvasLayer" parent="."]
+[node name="Drawer" type="CanvasLayer" parent="."]
 process_mode = 3
 script = ExtResource("2_l5cgh")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Pocket"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Drawer"]
 libraries = {
 &"": SubResource("AnimationLibrary_jrhyn")
 }
 
-[node name="iPod" type="TextureRect" parent="Pocket"]
+[node name="iPod" type="TextureRect" parent="Drawer"]
 unique_name_in_owner = true
 process_mode = 2
 anchors_preset = 8
@@ -264,20 +264,20 @@ grow_vertical = 2
 texture = ExtResource("1_twpsu")
 script = ExtResource("4_vgks2")
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Pocket/iPod"]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Drawer/iPod"]
 process_mode = 3
 stream = ExtResource("4_jrhyn")
 
-[node name="Controls" type="Control" parent="Pocket/iPod"]
+[node name="Controls" type="Control" parent="Drawer/iPod"]
 anchors_preset = 0
 metadata/_edit_group_ = true
 
-[node name="ScrollTimer" type="Timer" parent="Pocket/iPod/Controls"]
+[node name="ScrollTimer" type="Timer" parent="Drawer/iPod/Controls"]
 unique_name_in_owner = true
 wait_time = 0.1
 one_shot = true
 
-[node name="MenuButton" parent="Pocket/iPod/Controls" instance=ExtResource("2_twpsu")]
+[node name="MenuButton" parent="Drawer/iPod/Controls" instance=ExtResource("2_twpsu")]
 unique_name_in_owner = true
 layout_mode = 0
 offset_left = 22.0
@@ -288,7 +288,7 @@ texture = SubResource("AtlasTexture_log26")
 action = &"menu"
 sprite_frames = SubResource("SpriteFrames_vgks2")
 
-[node name="NextFastForward" parent="Pocket/iPod/Controls" instance=ExtResource("2_twpsu")]
+[node name="NextFastForward" parent="Drawer/iPod/Controls" instance=ExtResource("2_twpsu")]
 unique_name_in_owner = true
 layout_mode = 0
 offset_left = 76.0
@@ -299,7 +299,7 @@ texture = SubResource("AtlasTexture_ya6yc")
 action = &"next_fast_forward"
 sprite_frames = SubResource("SpriteFrames_dylgi")
 
-[node name="PlayPause" parent="Pocket/iPod/Controls" instance=ExtResource("2_twpsu")]
+[node name="PlayPause" parent="Drawer/iPod/Controls" instance=ExtResource("2_twpsu")]
 unique_name_in_owner = true
 layout_mode = 0
 offset_left = 22.0
@@ -310,7 +310,7 @@ texture = SubResource("AtlasTexture_34frw")
 action = &"play_pause"
 sprite_frames = SubResource("SpriteFrames_jrhyn")
 
-[node name="PreviousRewind" parent="Pocket/iPod/Controls" instance=ExtResource("2_twpsu")]
+[node name="PreviousRewind" parent="Drawer/iPod/Controls" instance=ExtResource("2_twpsu")]
 unique_name_in_owner = true
 layout_mode = 0
 offset_left = 9.0
@@ -321,7 +321,7 @@ texture = SubResource("AtlasTexture_ccljq")
 action = &"previous_rewind"
 sprite_frames = SubResource("SpriteFrames_log26")
 
-[node name="ScrollWheel" parent="Pocket/iPod/Controls" instance=ExtResource("2_twpsu")]
+[node name="ScrollWheel" parent="Drawer/iPod/Controls" instance=ExtResource("2_twpsu")]
 unique_name_in_owner = true
 layout_mode = 0
 offset_left = 19.0
@@ -334,7 +334,7 @@ sprite_frames = SubResource("SpriteFrames_gt4lb")
 press_stream = null
 release_stream = null
 
-[node name="SelectButton" parent="Pocket/iPod/Controls" instance=ExtResource("2_twpsu")]
+[node name="SelectButton" parent="Drawer/iPod/Controls" instance=ExtResource("2_twpsu")]
 unique_name_in_owner = true
 layout_mode = 0
 offset_left = 41.0
@@ -347,7 +347,7 @@ sprite_frames = SubResource("SpriteFrames_ya6yc")
 press_stream = SubResource("AudioStreamSynchronized_vgks2")
 release_stream = ExtResource("13_vgks2")
 
-[node name="GUI" type="MarginContainer" parent="Pocket/iPod"]
+[node name="GUI" type="MarginContainer" parent="Drawer/iPod"]
 clip_contents = true
 layout_mode = 0
 offset_left = 17.0
@@ -357,36 +357,36 @@ offset_bottom = 67.0
 theme_override_constants/margin_left = 1
 theme_override_constants/margin_right = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Pocket/iPod/GUI"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Drawer/iPod/GUI"]
 layout_mode = 2
 metadata/_edit_group_ = true
 
-[node name="Label" type="Label" parent="Pocket/iPod/GUI/VBoxContainer"]
+[node name="Label" type="Label" parent="Drawer/iPod/GUI/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 text = "Tutorial"
 
-[node name="HSeparator" type="HSeparator" parent="Pocket/iPod/GUI/VBoxContainer"]
+[node name="HSeparator" type="HSeparator" parent="Drawer/iPod/GUI/VBoxContainer"]
 layout_mode = 2
 
-[node name="ScrollContainer" type="ScrollContainer" parent="Pocket/iPod/GUI/VBoxContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="Drawer/iPod/GUI/VBoxContainer"]
 clip_contents = false
 layout_mode = 2
 size_flags_vertical = 3
 horizontal_scroll_mode = 3
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Pocket/iPod/GUI/VBoxContainer/ScrollContainer"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Drawer/iPod/GUI/VBoxContainer/ScrollContainer"]
 libraries = {
 &"": SubResource("AnimationLibrary_ya6yc")
 }
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Pocket/iPod/GUI/VBoxContainer/ScrollContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Drawer/iPod/GUI/VBoxContainer/ScrollContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_constants/separation = 2
 
-[node name="TutorialScreen" parent="Pocket/iPod/GUI/VBoxContainer/ScrollContainer/HBoxContainer" instance=ExtResource("15_log26")]
+[node name="TutorialScreen" parent="Drawer/iPod/GUI/VBoxContainer/ScrollContainer/HBoxContainer" instance=ExtResource("15_log26")]
 layout_mode = 2
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="."]
@@ -416,6 +416,6 @@ render_target_update_mode = 4
 position = Vector2(160, 90)
 script = ExtResource("16_jrhyn")
 
-[connection signal="animation_finished" from="Pocket/AnimationPlayer" to="Pocket" method="_on_animation_player_animation_finished"]
-[connection signal="animation_started" from="Pocket/AnimationPlayer" to="Pocket" method="_on_animation_player_animation_started"]
+[connection signal="animation_finished" from="Drawer/AnimationPlayer" to="Drawer" method="_on_animation_player_animation_finished"]
+[connection signal="animation_started" from="Drawer/AnimationPlayer" to="Drawer" method="_on_animation_player_animation_started"]
 [connection signal="child_entered_tree" from="SubViewportContainer/SubViewport" to="Camera2D" method="_on_sub_viewport_child_entered_tree"]
