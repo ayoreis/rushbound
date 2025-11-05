@@ -1,0 +1,337 @@
+[gd_scene load_steps=36 format=3 uid="uid://b8qusd6ke423v"]
+
+[ext_resource type="Texture2D" uid="uid://pg7ex3gchc4f" path="res://assets/sprites/ipod.png" id="1_xeyp6"]
+[ext_resource type="Script" uid="uid://dmcwpyjuqh6o" path="res://scripts/ipod.gd" id="2_v06sw"]
+[ext_resource type="AudioStream" uid="uid://cbbamxicsvmc1" path="res://assets/sounds/ui.wav" id="3_6lx7l"]
+[ext_resource type="PackedScene" uid="uid://c5vjmaxosdxge" path="res://scenes/ipod_control.tscn" id="4_d0fkk"]
+[ext_resource type="Texture2D" uid="uid://c3h6whop6jom4" path="res://assets/sprites/menu-button.png" id="5_11m5q"]
+[ext_resource type="Texture2D" uid="uid://cho6dibjlp231" path="res://assets/sprites/next-fast-forward.png" id="6_kqtb7"]
+[ext_resource type="Texture2D" uid="uid://b2837ol2qx47a" path="res://assets/sprites/play-pause.png" id="7_pk23h"]
+[ext_resource type="Texture2D" uid="uid://do8demo2e60h4" path="res://assets/sprites/previous-rewind.png" id="8_ihe0r"]
+[ext_resource type="Texture2D" uid="uid://xla01shyw243" path="res://assets/sprites/scroll-wheel.png" id="9_d8ei8"]
+[ext_resource type="Texture2D" uid="uid://bo5isxm8n1get" path="res://assets/sprites/select-button.png" id="10_m8xjp"]
+[ext_resource type="AudioStream" uid="uid://dgq6nc0jrt8g" path="res://assets/sounds/select-button-press.wav" id="11_6lx7l"]
+[ext_resource type="PackedScene" uid="uid://ot8xl7mhhov7" path="res://scenes/tutorial_screen.tscn" id="11_vcnhy"]
+[ext_resource type="AudioStream" uid="uid://dq6pe8irvv3u8" path="res://assets/sounds/select-button-release.wav" id="12_d0fkk"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_log26"]
+atlas = ExtResource("5_11m5q")
+region = Rect2(0, 0, 62, 21)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gt4lb"]
+atlas = ExtResource("5_11m5q")
+region = Rect2(0, 21, 62, 21)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vgks2"]
+resource_local_to_scene = true
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_log26")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gt4lb")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ya6yc"]
+atlas = ExtResource("6_kqtb7")
+region = Rect2(0, 0, 21, 62)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mflgo"]
+atlas = ExtResource("6_kqtb7")
+region = Rect2(21, 0, 21, 62)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dylgi"]
+resource_local_to_scene = true
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ya6yc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mflgo")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_34frw"]
+atlas = ExtResource("7_pk23h")
+region = Rect2(0, 0, 62, 21)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8ui5n"]
+atlas = ExtResource("7_pk23h")
+region = Rect2(0, 21, 62, 21)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jrhyn"]
+resource_local_to_scene = true
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_34frw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8ui5n")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ccljq"]
+atlas = ExtResource("8_ihe0r")
+region = Rect2(0, 0, 21, 62)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jehah"]
+atlas = ExtResource("8_ihe0r")
+region = Rect2(21, 0, 21, 62)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_log26"]
+resource_local_to_scene = true
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ccljq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jehah")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vgks2"]
+atlas = ExtResource("9_d8ei8")
+region = Rect2(0, 0, 68, 68)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dylgi"]
+atlas = ExtResource("9_d8ei8")
+region = Rect2(68, 0, 68, 68)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gt4lb"]
+resource_local_to_scene = true
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vgks2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dylgi")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jrhyn"]
+atlas = ExtResource("10_m8xjp")
+region = Rect2(0, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f3p2p"]
+atlas = ExtResource("10_m8xjp")
+region = Rect2(24, 0, 24, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ya6yc"]
+resource_local_to_scene = true
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jrhyn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f3p2p")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AudioStreamSynchronized" id="AudioStreamSynchronized_6lx7l"]
+stream_count = 2
+stream_0/stream = ExtResource("11_6lx7l")
+stream_0/volume = 0.0
+stream_1/stream = ExtResource("3_6lx7l")
+stream_1/volume = 0.0
+
+[sub_resource type="Animation" id="Animation_gt4lb"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scroll_horizontal")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_log26"]
+resource_name = "push"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scroll_horizontal")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0, 72]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ya6yc"]
+_data = {
+&"RESET": SubResource("Animation_gt4lb"),
+&"push": SubResource("Animation_log26")
+}
+
+[node name="iPod" type="TextureRect"]
+process_mode = 2
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -48.0
+offset_top = -79.0
+offset_right = 48.0
+offset_bottom = 79.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_xeyp6")
+script = ExtResource("2_v06sw")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+process_mode = 3
+stream = ExtResource("3_6lx7l")
+
+[node name="Controls" type="Control" parent="."]
+anchors_preset = 0
+metadata/_edit_group_ = true
+
+[node name="ScrollTimer" type="Timer" parent="Controls"]
+unique_name_in_owner = true
+wait_time = 0.1
+one_shot = true
+
+[node name="MenuButton" parent="Controls" instance=ExtResource("4_d0fkk")]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 22.0
+offset_top = 76.0
+offset_right = 88.0
+offset_bottom = 98.0
+texture = SubResource("AtlasTexture_log26")
+action = &"menu"
+sprite_frames = SubResource("SpriteFrames_vgks2")
+
+[node name="NextFastForward" parent="Controls" instance=ExtResource("4_d0fkk")]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 76.0
+offset_top = 89.0
+offset_right = 98.0
+offset_bottom = 155.0
+texture = SubResource("AtlasTexture_ya6yc")
+action = &"next_fast_forward"
+sprite_frames = SubResource("SpriteFrames_dylgi")
+
+[node name="PlayPause" parent="Controls" instance=ExtResource("4_d0fkk")]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 22.0
+offset_top = 143.0
+offset_right = 88.0
+offset_bottom = 165.0
+texture = SubResource("AtlasTexture_34frw")
+action = &"play_pause"
+sprite_frames = SubResource("SpriteFrames_jrhyn")
+
+[node name="PreviousRewind" parent="Controls" instance=ExtResource("4_d0fkk")]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 9.0
+offset_top = 89.0
+offset_right = 31.0
+offset_bottom = 155.0
+texture = SubResource("AtlasTexture_ccljq")
+action = &"previous_rewind"
+sprite_frames = SubResource("SpriteFrames_log26")
+
+[node name="ScrollWheel" parent="Controls" instance=ExtResource("4_d0fkk")]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 19.0
+offset_top = 86.0
+offset_right = 93.0
+offset_bottom = 160.0
+texture = SubResource("AtlasTexture_vgks2")
+sprite_frames = SubResource("SpriteFrames_gt4lb")
+press_stream = null
+release_stream = null
+
+[node name="SelectButton" parent="Controls" instance=ExtResource("4_d0fkk")]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 41.0
+offset_top = 108.0
+offset_right = 65.0
+offset_bottom = 132.0
+texture = SubResource("AtlasTexture_jrhyn")
+action = &"select"
+sprite_frames = SubResource("SpriteFrames_ya6yc")
+press_stream = SubResource("AudioStreamSynchronized_6lx7l")
+release_stream = ExtResource("12_d0fkk")
+
+[node name="GUI" type="MarginContainer" parent="."]
+clip_contents = true
+layout_mode = 0
+offset_left = 17.0
+offset_top = 8.0
+offset_right = 89.0
+offset_bottom = 67.0
+theme_override_constants/margin_left = 1
+theme_override_constants/margin_right = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GUI"]
+layout_mode = 2
+metadata/_edit_group_ = true
+
+[node name="Label" type="Label" parent="GUI/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Tutorial"
+
+[node name="HSeparator" type="HSeparator" parent="GUI/VBoxContainer"]
+layout_mode = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="GUI/VBoxContainer"]
+clip_contents = false
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 3
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="GUI/VBoxContainer/ScrollContainer"]
+libraries = {
+&"": SubResource("AnimationLibrary_ya6yc")
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="GUI/VBoxContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 2
+
+[node name="TutorialScreen" parent="GUI/VBoxContainer/ScrollContainer/HBoxContainer" instance=ExtResource("11_vcnhy")]
+layout_mode = 2
