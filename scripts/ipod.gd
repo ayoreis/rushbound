@@ -17,9 +17,9 @@ var playback_position: float
 @onready var scroll_wheel: iPodControl = %ScrollWheel
 @onready var select_button: iPodControl = %SelectButton
 @onready var label: Label = $GUI/VBoxContainer/Label
-@onready var scroll_container: ScrollContainer = $GUI/VBoxContainer/ScrollContainer
 @onready var animation_player: AnimationPlayer = $GUI/VBoxContainer/ScrollContainer/AnimationPlayer
 @onready var h_box_container: HBoxContainer = $GUI/VBoxContainer/ScrollContainer/HBoxContainer
+@onready var filler: Control = $GUI/VBoxContainer/ScrollContainer/HBoxContainer/Filler
 
 
 func _ready() -> void:
@@ -48,7 +48,7 @@ func _process(_delta: float) -> void:
 			var node: Control = screen.node
 
 			label.text = title
-			h_box_container.custom_minimum_size.x = h_box_container.size.x * 2
+			h_box_container.remove_child(filler)
 			h_box_container.add_child(node)
 			h_box_container.move_child(node, 0)
 
@@ -59,7 +59,7 @@ func _process(_delta: float) -> void:
 
 			var _on_animation_finished := func (_animation_name: StringName) -> void:
 				h_box_container.get_child(1).queue_free()
-				h_box_container.custom_minimum_size.x = 0
+				h_box_container.add_child(filler)
 
 				if focus_child != null:
 					focus_child.theme_type_variation = &""
@@ -132,7 +132,7 @@ func _on_screen_pushed(title: String, node: Control) -> void:
 	var previous_title := label.text
 
 	label.text = title
-	h_box_container.custom_minimum_size.x = h_box_container.size.x * 2
+	h_box_container.remove_child(filler)
 	h_box_container.add_child(node)
 
 	var focus_child := find_valid_focus_child(node)
@@ -153,7 +153,8 @@ func _on_screen_pushed(title: String, node: Control) -> void:
 	var previous_screen := h_box_container.get_child(0)
 	screen_stack.push_front({ title = previous_title, node = previous_screen })
 	h_box_container.remove_child(previous_screen)
-	h_box_container.custom_minimum_size.x = 0
+	h_box_container.add_child(filler)
+	h_box_container.move_child(filler, 0)
 
 
 func _on_track_selected(track: Track) -> void:
