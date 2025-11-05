@@ -46,7 +46,6 @@ func _process(_delta: float) -> void:
 			var screen: Dictionary = screen_stack.pop_front()
 			var title: String = screen.title
 			var node: Control = screen.node
-			print(screen)
 
 			label.text = title
 			h_box_container.custom_minimum_size.x = h_box_container.size.x * 2
