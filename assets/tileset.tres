@@ -1,0 +1,56 @@
+[gd_resource type="TileSet" load_steps=5 format=3 uid="uid://bsfdkkiamcq1"]
+
+[ext_resource type="Texture2D" uid="uid://dcdj6da4dkoab" path="res://assets/sprites/lava-surface.png" id="1_l70by"]
+[ext_resource type="Texture2D" uid="uid://ch8bqhx3w5apu" path="res://assets/sprites/lava.png" id="2_ylah7"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ylah7"]
+texture = ExtResource("1_l70by")
+texture_region_size = Vector2i(8, 8)
+0:0/size_in_atlas = Vector2i(1, 2)
+0:0/animation_columns = 14
+0:0/animation_speed = 6.0
+0:0/animation_mode = 1
+0:0/animation_frame_0/duration = 5.0
+0:0/animation_frame_1/duration = 1.0
+0:0/animation_frame_2/duration = 1.0
+0:0/animation_frame_3/duration = 1.0
+0:0/animation_frame_4/duration = 1.0
+0:0/animation_frame_5/duration = 1.0
+0:0/animation_frame_6/duration = 1.0
+0:0/animation_frame_7/duration = 1.0
+0:0/animation_frame_8/duration = 1.0
+0:0/animation_frame_9/duration = 1.0
+0:0/animation_frame_10/duration = 1.0
+0:0/animation_frame_11/duration = 1.0
+0:0/animation_frame_12/duration = 1.0
+0:0/animation_frame_13/duration = 1.0
+0:0/0 = 0
+0:0/0/texture_origin = Vector2i(0, 4)
+0:2/size_in_atlas = Vector2i(1, 2)
+0:2/animation_columns = 12
+0:2/animation_speed = 6.0
+0:2/animation_mode = 1
+0:2/animation_frame_0/duration = 3.0
+0:2/animation_frame_1/duration = 1.0
+0:2/animation_frame_2/duration = 1.0
+0:2/animation_frame_3/duration = 1.0
+0:2/animation_frame_4/duration = 1.0
+0:2/animation_frame_5/duration = 1.0
+0:2/animation_frame_6/duration = 1.0
+0:2/animation_frame_7/duration = 1.0
+0:2/animation_frame_8/duration = 1.0
+0:2/animation_frame_9/duration = 1.0
+0:2/animation_frame_10/duration = 1.0
+0:2/animation_frame_11/duration = 1.0
+0:2/0 = 0
+0:2/0/texture_origin = Vector2i(0, 4)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fcvr3"]
+texture = ExtResource("2_ylah7")
+texture_region_size = Vector2i(8, 8)
+0:0/0 = 0
+
+[resource]
+tile_size = Vector2i(8, 8)
+sources/0 = SubResource("TileSetAtlasSource_ylah7")
+sources/1 = SubResource("TileSetAtlasSource_fcvr3")
