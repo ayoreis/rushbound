@@ -18,7 +18,6 @@ stream_1/volume = 0.0
 [node name="iPodControl" type="TextureRect"]
 stretch_mode = 2
 script = ExtResource("1_iuw07")
-action = null
 sprite_frames = SubResource("SpriteFrames_qv8a8")
 press_stream = SubResource("AudioStreamSynchronized_qv8a8")
 release_stream = ExtResource("3_qv8a8")
